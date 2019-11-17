@@ -6,12 +6,12 @@ namespace CourseApp.Tests
     public class DemoTest
     {
         [Theory]
-        [InlineData(0, 0, 0, double.NaN)]
-        [InlineData(1, 1, 2, 2.5)]
+        [InlineData(0, 0, double.NaN)]
+        [InlineData(1, 2, 2.5)]
         [InlineData(-1, 1, 1, 0)]
         public void TestCalc(double a, double b, double x, double exp)
         {
-            var res = Program.MyFunction(a, b, x);
+            var res = Program.MyFunction(a, x);
             Assert.Equal(exp, res, 3);
         }
 
@@ -28,7 +28,7 @@ namespace CourseApp.Tests
         [Fact]
         public void TestZeroLengthB()
         {
-            var res = Program.TaskB(1, 1, new double[0]);
+            var res = Program.TaskB(1, new double[0]);
             Assert.Empty(res);
         }
     }
