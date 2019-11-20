@@ -2,23 +2,24 @@ using System;
 
 namespace CourseApp
 {
-    public class Platypus
+    public class Film
     {
         private int age;
+        string country;
 
-        public Platypus()
-        : this(0, "Untitled", true)
+        public Film()
+        : this(0, "Untitled","No country", true)
         {
         }
 
-        public Platypus(int age, string name, bool isMale)
+        public Film(int age, string name,string country)
         {
             Name = name;
-            Age = age;
-            IsMale = isMale;
+            Age = age;            
         }
 
         public string Name { get; set; }
+        public string Country; 
 
         public int Age
         {
@@ -40,11 +41,14 @@ namespace CourseApp
             }
         }
 
-        public bool IsMale { get; set; }
-
-        public bool IsPoisoned
+        public string View()
         {
-            get { return this.IsMale; }
+            return @"
+         _.-^~~^^^`~-,_,,~''''''```~,''``~'``~,
+ ______,'  -o  :.  _    .          ;     ,'`,  `.
+(      -\.._,.;;'._ ,(   }        _`_-_,,    `, `,
+ ``~~~~~~'   ((/'((((____/~~~~~~'(,(,___>      `~'
+ ";
         }
     }
 }

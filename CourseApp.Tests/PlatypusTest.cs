@@ -15,19 +15,6 @@ namespace CourseApp.Tests
         }
 
         [Fact]
-        public void TestView()
-        {
-            var item = new Platypus();
-            var view = @"
-         _.-^~~^^^`~-,_,,~''''''```~,''``~'``~,
- ______,'  -o  :.  _    .          ;     ,'`,  `.
-(      -\.._,.;;'._ ,(   }        _`_-_,,    `, `,
- ``~~~~~~'   ((/'((((____/~~~~~~'(,(,___>      `~'
- ";
-            Assert.Equal(view, item.View());
-        }
-
-        [Fact]
         public void TestSetAge()
         {
             var item = new Platypus();

@@ -48,8 +48,8 @@ namespace CourseApp
             {
                 Console.WriteLine("Hello World!");
                 var taskA = TaskA(2.25, 1.2, 2.7, 0.3);
-                Console.WriteLine(taskA);
 
+                 // Console.WriteLine(taskA);
                 for (var i = 0; i < taskA.Length; i++)
                 {
                     Console.WriteLine($"y={taskA[i]}");
