@@ -8,7 +8,7 @@ namespace CourseApp
         string country;
 
         public Film()
-        : this(0, "Untitled","No country", true)
+        : this(0, "Untitled","No country")
         {
         }
 
@@ -30,25 +30,24 @@ namespace CourseApp
 
             set
             {
-                if (value >= 0 && value < 20)
+                if (value >= 1910 && value < 2020)
                 {
                     this.age = value;
                 }
                 else
                 {
-                    Console.WriteLine("Age should be > 0 and < than 20");
+                    Console.WriteLine("Age should be > 1910 and < than 2020");
                 }
             }
-        }
 
-        public string View()
+        }
+        public void WatchFilm()
         {
-            return @"
-         _.-^~~^^^`~-,_,,~''''''```~,''``~'``~,
- ______,'  -o  :.  _    .          ;     ,'`,  `.
-(      -\.._,.;;'._ ,(   }        _`_-_,,    `, `,
- ``~~~~~~'   ((/'((((____/~~~~~~'(,(,___>      `~'
- ";
+          Console.WriteLine("I watch film:");
+          Age=1990;
+          
+
+
         }
     }
 }

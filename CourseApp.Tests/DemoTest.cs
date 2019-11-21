@@ -8,9 +8,9 @@ namespace CourseApp.Tests
     {
         [Theory]
         [InlineData(0, 0, double.NaN)]
+        [InlineData(-1, 0, 1)]
+        [InlineData(2, 10, 6)]
 
-        // [InlineData(-1, 0, 1)]
-        // [InlineData(2, 10, 6)]
         public void TestCalc(double a, double x, double exp)
         {
             var res = Program.MyFunction(a, x);
@@ -19,15 +19,17 @@ namespace CourseApp.Tests
 
         [Fact]
 
-        public void TestZeroValues()
+        public void TestNotANumber()
         {
-            var a = Program.MyFunction(0, 0);
-            Assert.Equal(double.NaN, a);
+            var a = Program.MyFunction(1, 1);
+            Assert.True(double.IsNaN(a));
         }
 
         [Fact]
         public void TestNormalA()
         {
+            var a = Program.MyFunction(, 0);
+
         }
 
         [Fact]

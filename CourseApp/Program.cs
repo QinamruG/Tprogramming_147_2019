@@ -19,7 +19,7 @@ namespace CourseApp
                                          double xk,
                                          double dx)
             {
-                var steps = (int)Math.Floor((xk - xn) / dx) + 1;
+                var steps = (int)Math.Round((xk - xn) / dx);
                 var y = new double[steps];
                 var i = 0;
                 for (var x = xn; x < xk; x += dx)
@@ -61,6 +61,8 @@ namespace CourseApp
                 {
                     Console.WriteLine($"x={xB[i]} y={taskB[i]}");
                 }
+
+                //var tmp = new Film();
 
                 Console.ReadLine();
             }
