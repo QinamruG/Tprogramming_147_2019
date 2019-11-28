@@ -4,19 +4,17 @@ namespace CourseApp
 {
     public class Film
     {
-        private int age;
-        /*private string country;
-        private string name;*/
+        private int year;
 
         public Film()
         : this(0, "Untitled", "No country")
         {
         }
 
-        public Film(int age, string name, string country)
+        public Film(int year, string name, string country)
         {
             Name = name;
-            Age = age;
+            ProdYear = year;
             Country = country;
         }
 
@@ -24,56 +22,60 @@ namespace CourseApp
 
         public string Country { get; set; }
 
-        public int Age
+        public int ProdYear
         {
             get
             {
-                return this.age;
+                return this.year;
             }
 
             set
             {
-                if (value >= 1888 && value < 2020)
+                if (value >= 1888 && value <= DateTime.Now.Year)
                 {
-                    this.age = value;
+                    this.year = value;
                 }
                 else
                 {
-                    Console.WriteLine("Age should be > 1888 and < than 2020");
-
-                    // throw new Exception[];
+                    Console.WriteLine($"Production year should be > 1888 and < than {DateTime.Now.Year}");
                 }
             }
         }
 
-        public void WatchFilm()
+        public string WatchFilm()
         {
-        Console.WriteLine($"This is a film, named {Name}, Which came out in {Age} in {Country}, was awesome!");
+        return $"This is a film, named {Name}, Which came out in {ProdYear} in {Country}, was awesome!";
         }
+
         public void MarkFilm(int mark)
         {
            switch (mark)
            {
-            case 1:
-            Console.WriteLine($"{Name} is terrible film, dont watch it never!!!!!! ");
-            break;
-            
-            case 2:
-            Console.WriteLine($"Ok,{Name} not good not bad, for an amateur...");
-            break;
-            
-            case 3:
-            Console.WriteLine($"{Name} is a masterpeace!!! I want to {Country} to take a look at those places!!!");
-            break;
+               case 1:
 
-            default:
-            Console.WriteLine("HI-hi-hi im not watched this film");
-            break;
+               Console.WriteLine($"{Name} is terrible film, dont watch it never!!!!!! ");
+               break;
+
+               case 2:
+
+               Console.WriteLine($"Ok,{Name} not good not bad, for an amateur...");
+               break;
+
+               case 3:
+
+               Console.WriteLine($"{Name} is a masterpeace!!! I want to {Country} to take a look at those places!!!");
+               break;
+
+               default:
+
+               Console.WriteLine("HI-hi-hi im not watched this film");
+               break;
            }
         }
-        public string SendFilm(string ToWho)
+
+        public string SendFilm(string toWho)
         {
-          return $"Hi {ToWho}, can you check {Name}({Age}) to watch? I want to know your opinion about this film))";
+          return $"Hi {toWho}, can you check {Name}({ProdYear}) to watch? I want to know your opinion about this film))";
         }
     }
 }

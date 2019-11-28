@@ -18,7 +18,6 @@ namespace CourseApp.Tests
         }
 
         [Fact]
-
         public void TestNotaNumber()
         {
             var a = Program.MyFunction(1.1, 1.3);
@@ -32,12 +31,9 @@ namespace CourseApp.Tests
         {
             var c = Program.TaskA(a, xn, xk, dx);
              Assert.NotNull(c);
-
-            // Assert.Equal(exp, c);
         }
 
         [Theory]
-
         [InlineData(3, 5)]
         public void TestNormalB(int t, double a)
         {
