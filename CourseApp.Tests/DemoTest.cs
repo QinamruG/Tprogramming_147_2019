@@ -24,22 +24,28 @@ namespace CourseApp.Tests
             Assert.False(double.IsNaN(a));
         }
 
-        [Theory]
-        [InlineData(1, 2, 3, 4)]
-        [InlineData(4, 3, 2, 1)]
-        public void TestNormalA(double a, double xn, double xk, double dx)
+        [Fact]
+        public void TestNormalA()
         {
-            var c = Program.TaskA(a, xn, xk, dx);
-             Assert.NotNull(c);
+            var exp = Program.TaskA(2.25, 1.2, 2.7, 0.3);
+            var act = new double[] { 2.7853106952595, 3.65876594762302, 6.79994634014975, 16.350605890362, 47.7890653567819, 164.346493221504 };
+
+            for (int i = 0; i < 5; i++)
+            {
+            Assert.Equal(exp[i], act[i], 3);
+            }
         }
 
-        [Theory]
-        [InlineData(3, 5)]
-        public void TestNormalB(int t, double a)
+        [Fact]
+        public void TestNormalB()
         {
-            double[] x = new double[t];
-            var c = Program.TaskB(a, x);
-            Assert.NotNull(c);
+            var x = new double[] { 1.31, 1.39, 1.44, 1.56, 1.92 };
+            var act = Program.TaskB(2, x);
+            var exp = new double[] { 2.78776158956314, 2.93858884457848, 3.07383618485121, 3.54477114149419, 7.00788077097357 };
+            for (int i = 0; i < 5; i++)
+            {
+                Assert.Equal(exp[i], act[i], 3);
+            }
         }
 
         [Fact]
