@@ -75,7 +75,12 @@ namespace CourseApp
 
         public string SendFilm(string toWho)
         {
-          return $"Hi {toWho}, can you check {Name}({ProdYear}) to watch? I want to know your opinion about this film))";
+            return $"Hi {toWho}, can you check {Name}({ProdYear}) to watch? I want to know your opinion about this film))";
         }
+
+        public override string ToString() 
+        { 
+            return "Name: " + Name.ToString() + ", Production year: " + ProdYear.ToString() + ", Country: " + Country.ToString(); 
+        } 
     }
 }
