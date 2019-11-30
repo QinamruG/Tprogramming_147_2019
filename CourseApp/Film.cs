@@ -7,7 +7,7 @@ namespace CourseApp
         private int year;
 
         public Film()
-        : this(0, "Untitled", "No country")
+        : this(1888, "Untitled", "No country")
         {
         }
 
@@ -37,14 +37,15 @@ namespace CourseApp
                 }
                 else
                 {
-                    throw new System.ArgumentException($"Production year should be > 1888 and < than {DateTime.Now.Year}");
+                    // throw new System.ArgumentException($"Production year should be > 1888 and < than {DateTime.Now.Year}");
+                    Console.WriteLine($"Production year should be > 1888 and < than {DateTime.Now.Year}");
                 }
             }
         }
 
         public string WatchFilm()
         {
-        return $"This is a film, named {Name}, Which came out in {ProdYear} in {Country}, was awesome!";
+        return $"Now i am watching a film, named {Name}, which came out in {ProdYear} from {Country}";
         }
 
         public void MarkFilm(int mark)
@@ -78,9 +79,9 @@ namespace CourseApp
             return $"Hi {toWho}, can you check {Name}({ProdYear}) to watch? I want to know your opinion about this film))";
         }
 
-        public override string ToString() 
-        { 
-            return "Name: " + Name.ToString() + ", Production year: " + ProdYear.ToString() + ", Country: " + Country.ToString(); 
-        } 
+        public override string ToString()
+        {
+            return "Name: " + Name.ToString() + ", Production year: " + ProdYear.ToString() + ", Country: " + Country.ToString();
+        }
     }
 }
