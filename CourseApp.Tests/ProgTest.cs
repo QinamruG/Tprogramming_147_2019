@@ -3,7 +3,7 @@ using Xunit;
 
 namespace CourseApp.Tests
 {
-    public class DemoTest
+    public class ProgTest
     {
         [Theory]
         [InlineData(0, 0, double.NaN)]

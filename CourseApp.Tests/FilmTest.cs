@@ -54,5 +54,13 @@ namespace CourseApp.Tests
             var act = item.SendFilm("Kostya");
             Assert.Equal($"Hi Kostya, can you check GhostBusters(1984) to watch? I want to know your opinion about this film))", act);
         }
+
+        [Fact]
+        public void TestWatchFilm()
+        {
+            var item = new Film(1984, "GhostBusters", "America");
+            var act = item.WatchFilm();
+            Assert.Equal($"Now i am watching a film, named GhostBusters, which came out in 1984 from America", act);
+        }
     }
 }
