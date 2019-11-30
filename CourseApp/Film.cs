@@ -37,7 +37,7 @@ namespace CourseApp
                 }
                 else
                 {
-                    Console.WriteLine($"Production year should be > 1888 and < than {DateTime.Now.Year}");
+                    throw new System.ArgumentException($"Production year should be > 1888 and < than {DateTime.Now.Year}");
                 }
             }
         }
