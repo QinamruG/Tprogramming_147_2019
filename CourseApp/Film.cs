@@ -48,29 +48,26 @@ namespace CourseApp
         return $"Now i am watching a film, named {Name}, which came out in {ProdYear} from {Country}";
         }
 
-        public void MarkFilm(int mark)
+        public string MarkFilm(int mark)
         {
            switch (mark)
            {
                case 1:
 
-               Console.WriteLine($"{Name} is terrible film, dont watch it never!!!!!! ");
+               //Console.WriteLine($"{Name} is terrible film, dont watch it never!!!!!! ");
+               return $"{Name} is terrible film, dont watch it never!!!!!! ";
+
+               // Console.WriteLine($"Ok,{Name} not good not bad, for an amateur...");
+               return $"Ok,{Name} not good not bad, for an amateur...";
                break;
 
-               case 2:
-
-               Console.WriteLine($"Ok,{Name} not good not bad, for an amateur...");
-               break;
-
-               case 3:
-
-               Console.WriteLine($"{Name} is a masterpeace!!! I want to {Country} to take a look at those places!!!");
-               break;
+               // Console.WriteLine($"{Name} is a masterpeace!!! I want to {Country} to take a look at those places!!!");
+               return $"{Name} is a masterpeace!!! I want to {Country} to take a look at those places!!!";
 
                default:
 
-               Console.WriteLine("HI-hi-hi im not watched this film");
-               break;
+               // Console.WriteLine("HI-hi-hi im not watched this film");
+               return "HI-hi-hi im not watched this film";
            }
         }
 
@@ -81,7 +78,7 @@ namespace CourseApp
 
         public override string ToString()
         {
-            return "Name: " + Name.ToString() + ", Production year: " + ProdYear.ToString() + ", Country: " + Country.ToString();
+            return $"Name:{Name}, Production year:{ProdYear}, Country:{Country}";
         }
     }
 }
