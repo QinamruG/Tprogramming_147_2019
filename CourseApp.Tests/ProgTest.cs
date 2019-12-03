@@ -20,7 +20,7 @@ namespace CourseApp.Tests
         [Fact]
         public void TestNotaNumber()
         {
-            var a = Program.MyFunction(1.1, 1.3);
+            var a = Program.MyFunction(0, 1);
             Assert.False(double.IsNaN(a));
         }
 

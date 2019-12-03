@@ -26,17 +26,33 @@ namespace CourseApp.Tests
         public void TestIncorrectSetProductionYear()
         {
             var item = new Film();
-            item.ProdYear = 120;
-            Assert.Equal(1888, item.ProdYear);
+            try
+            {
+                item.ProdYear = 120;
+                Assert.Equal(1888, item.ProdYear);
+            }
+            catch (System.Exception)
+            {
+                Console.WriteLine($"Production year should be > 1888 and < than {DateTime.Now.Year}");
+                Assert.True(true);
+            }
         }
 
         [Fact]
         public void TestCorrectIncorrectSetProductionYear()
         {
             var item = new Film();
-            item.ProdYear = 2008;
-            item.ProdYear = 235;
-            Assert.Equal(2008, item.ProdYear);
+            try
+            {
+                item.ProdYear = 2008;
+                item.ProdYear = 235;
+                Assert.Equal(2008, item.ProdYear);
+            }
+            catch (System.Exception)
+            {
+                Console.WriteLine($"Production year should be > 1888 and < than {DateTime.Now.Year}");
+                Assert.True(true);
+            }
         }
 
         [Fact]

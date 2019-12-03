@@ -37,8 +37,7 @@ namespace CourseApp
                 }
                 else
                 {
-                    // throw new System.ArgumentException($"Production year should be > 1888 and < than {DateTime.Now.Year}");
-                    Console.WriteLine($"Production year should be > 1888 and < than {DateTime.Now.Year}");
+                    throw new System.Exception($"Production year should be > 1888 and < than {DateTime.Now.Year}");
                 }
             }
         }
@@ -53,20 +52,15 @@ namespace CourseApp
            switch (mark)
            {
                case 1:
-
-               //Console.WriteLine($"{Name} is terrible film, dont watch it never!!!!!! ");
                return $"{Name} is terrible film, dont watch it never!!!!!! ";
 
-               // Console.WriteLine($"Ok,{Name} not good not bad, for an amateur...");
+               case 2:
                return $"Ok,{Name} not good not bad, for an amateur...";
-               break;
 
-               // Console.WriteLine($"{Name} is a masterpeace!!! I want to {Country} to take a look at those places!!!");
+               case 3:
                return $"{Name} is a masterpeace!!! I want to {Country} to take a look at those places!!!";
 
                default:
-
-               // Console.WriteLine("HI-hi-hi im not watched this film");
                return "HI-hi-hi im not watched this film";
            }
         }
