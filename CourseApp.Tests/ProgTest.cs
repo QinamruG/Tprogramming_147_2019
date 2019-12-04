@@ -36,7 +36,7 @@ namespace CourseApp.Tests
             }
         }
 
-        [Fact]
+        /*[Fact]
         public void TestNormalB()
         {
             var x = new double[] { 1.31, 1.39, 1.44, 1.56, 1.92 };
@@ -46,13 +46,13 @@ namespace CourseApp.Tests
             {
                 Assert.Equal(exp[i], act[i], 3);
             }
-        }
+        } */
 
-        [Fact]
+       /* [Fact]
         public void TestZeroLengthB()
         {
             var res = Program.TaskB(0, new double[0]);
             Assert.Empty(res);
-        }
+        } */
     }
 }

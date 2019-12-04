@@ -1,5 +1,7 @@
 ﻿// Вариант 22
 using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace CourseApp
 {
@@ -13,32 +15,30 @@ namespace CourseApp
             return c;
             }
 
-        public static double[] TaskA(
+        public static List<double> TaskA(
                                          double a,
                                          double xn,
                                          double xk,
                                          double dx)
             {
-                var steps = (int)Math.Floor((xk - xn) / dx) + 1;
-                var y = new double[steps];
-                var i = 0;
+                // var steps = (int)Math.Floor((xk - xn) / dx) + 1;
+                List<double> y = new List<double>();
                 for (var x = xn; x < xk; x += dx)
                 {
-                    y[i] = MyFunction(a, x);
-                    i++;
+                    y.Add(MyFunction(a, x));
                 }
 
                 return y;
             }
 
-        public static double[] TaskB (
+        public static List<double> TaskB (
                                  double a,
-                                 double[] x)
+                                 List<double> x)
             {
-                var y = new double[x.Length];
-                for (int i = 0; i < x.Length; i++)
+                List<double> y = new List<double>(5);
+                foreach (double i in x)
                 {
-                    y[i] = MyFunction(a, x[i]);
+                    y.Add(MyFunction(a, i));
                 }
 
                 return y;
@@ -46,19 +46,24 @@ namespace CourseApp
 
             public static void Main(string[] args)
             {
-                Console.WriteLine("Hello World!");
-                var taskA = TaskA(2.25, 1.2, 2.7, 0.3);
+                Console.WriteLine("hELLO");
+                List<double> taskA = TaskA(2.25, 1.2, 2.7, 0.3);
 
-                for (var i = 0; i < taskA.Length; i++)
+                foreach (var item in taskA)
                 {
-                    Console.WriteLine($"y={taskA[i]}");
+                    Console.WriteLine($"y={item}");
                 }
 
-                var xB = new double[] { 1.31, 1.39, 1.44, 1.56, 1.92 };
-                var taskB = TaskB(2, xB);
-                for (var i = 0; i < xB.Length; i++)
+                List<double> xB = new List<double>() { 1.31, 1.39, 1.44, 1.56, 1.92 };
+                List<double> taskB = TaskB(2, xB);
+                for (int i = 0; i < 5; i++)
                 {
-                    Console.WriteLine($"x={xB[i]} y={taskB[i]}");
+                    Console.WriteLine($"x={xB[i]}");
+                }
+
+                foreach (var item in taskB)
+                {
+                    Console.WriteLine($"y={item}");
                 }
 
                 Console.ReadLine();
