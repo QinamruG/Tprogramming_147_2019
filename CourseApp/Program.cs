@@ -21,7 +21,6 @@ namespace CourseApp
                                          double xk,
                                          double dx)
             {
-                // var steps = (int)Math.Floor((xk - xn) / dx) + 1;
                 List<double> y = new List<double>();
                 for (var x = xn; x < xk; x += dx)
                 {

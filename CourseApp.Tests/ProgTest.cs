@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace CourseApp.Tests
@@ -36,23 +37,23 @@ namespace CourseApp.Tests
             }
         }
 
-        /*[Fact]
+        [Fact]
         public void TestNormalB()
         {
-            var x = new double[] { 1.31, 1.39, 1.44, 1.56, 1.92 };
+            List<double> x = new List<double>() { 1.31, 1.39, 1.44, 1.56, 1.92 };
             var act = Program.TaskB(2, x);
-            var exp = new double[] { 2.78776158956314, 2.93858884457848, 3.07383618485121, 3.54477114149419, 7.00788077097357 };
+            List<double> exp = new List<double>() { 2.78776158956314, 2.93858884457848, 3.07383618485121, 3.54477114149419, 7.00788077097357 };
             for (int i = 0; i < 5; i++)
             {
                 Assert.Equal(exp[i], act[i], 3);
             }
-        } */
+        }
 
-       /* [Fact]
+        [Fact]
         public void TestZeroLengthB()
         {
-            var res = Program.TaskB(0, new double[0]);
+            var res = Program.TaskB(0, new List<double>());
             Assert.Empty(res);
-        } */
+        }
     }
 }
