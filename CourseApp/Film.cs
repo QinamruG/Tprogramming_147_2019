@@ -2,7 +2,7 @@ using System;
 
 namespace CourseApp
 {
-    public class Film
+    public class Film : PieceOfArt
     {
         private int year;
 
@@ -18,11 +18,11 @@ namespace CourseApp
             Country = country;
         }
 
-        public string Name { get; set; }
+        public override string Name { get; set; }
 
-        public string Country { get; set; }
+        public override string Country { get; set; }
 
-        public int ProdYear
+        public override int ProdYear
         {
             get
             {
@@ -42,12 +42,12 @@ namespace CourseApp
             }
         }
 
-        public string WatchFilm()
+        public override string Watch()
         {
         return $"Now i am watching a film, named {Name}, which came out in {ProdYear} from {Country}";
         }
 
-        public string MarkFilm(int mark)
+        public override string Mark(int mark)
         {
            switch (mark)
            {
@@ -65,7 +65,7 @@ namespace CourseApp
            }
         }
 
-        public string SendFilm(string toWho)
+        public override string Send(string toWho)
         {
             return $"Hi {toWho}, can you check {Name}({ProdYear}) to watch? I want to know your opinion about this film))";
         }

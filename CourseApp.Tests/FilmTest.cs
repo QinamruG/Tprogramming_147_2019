@@ -67,7 +67,7 @@ namespace CourseApp.Tests
         public void TestSendFilm()
         {
             var item = new Film(1984, "GhostBusters", "America");
-            var act = item.SendFilm("Kostya");
+            var act = item.Send("Kostya");
             Assert.Equal($"Hi Kostya, can you check GhostBusters(1984) to watch? I want to know your opinion about this film))", act);
         }
 
@@ -75,7 +75,7 @@ namespace CourseApp.Tests
         public void TestWatchFilm()
         {
             var item = new Film(1984, "GhostBusters", "America");
-            var act = item.WatchFilm();
+            var act = item.Watch();
             Assert.Equal($"Now i am watching a film, named GhostBusters, which came out in 1984 from America", act);
         }
     }
