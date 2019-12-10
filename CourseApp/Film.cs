@@ -11,16 +11,17 @@ namespace CourseApp
         {
         }
 
-        public Film(int year, string name, string country)
+        public Film(int prodYear, string name, string country)
+        : base(prodYear, name, country)
         {
-            Name = name;
-            ProdYear = year;
-            Country = country;
+            /*Name = name;
+            //ProdYear = prodYear;
+            Country = country;*/
         }
 
-        public override string Name { get; set; }
+        /* public override string Name { get; set; }
 
-        public override string Country { get; set; }
+         public override string Country { get; set; }*/
 
         public override int ProdYear
         {

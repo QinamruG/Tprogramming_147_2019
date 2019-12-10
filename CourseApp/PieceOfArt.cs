@@ -4,9 +4,16 @@ namespace CourseApp
 {
   public abstract class PieceOfArt
   {
-    public abstract string Name { get; set; }
+    public PieceOfArt(int prodYear, string name, string country)
+    {
+      Name = name;
+      ProdYear = prodYear;
+      Country = country;
+    }
 
-    public abstract string Country { get; set; }
+    public string Name { get; set; }
+
+    public string Country { get; set; }
 
     public abstract int ProdYear { get; set; }
 
@@ -15,5 +22,7 @@ namespace CourseApp
     public abstract string Mark(int mark);
 
     public abstract string Send(string toWho);
+
+    public new abstract string ToString();
   }
 }
