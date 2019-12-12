@@ -3,7 +3,7 @@ using Xunit;
 
 namespace CourseApp.Tests
 {
-        public class FilmTest
+    public class FilmTest
     {
         [Fact]
         public void TestEmptyConstructor()

@@ -14,14 +14,7 @@ namespace CourseApp
         public Film(int prodYear, string name, string country)
         : base(prodYear, name, country)
         {
-            /*Name = name;
-            //ProdYear = prodYear;
-            Country = country;*/
         }
-
-        /* public override string Name { get; set; }
-
-         public override string Country { get; set; }*/
 
         public override int ProdYear
         {
@@ -45,25 +38,25 @@ namespace CourseApp
 
         public override string Watch()
         {
-        return $"Now i am watching a film, named {Name}, which came out in {ProdYear} from {Country}";
+            return $"Now i am watching a film, named {Name}, which came out in {ProdYear} from {Country}";
         }
 
         public override string Mark(int mark)
         {
-           switch (mark)
-           {
-               case 1:
-               return $"{Name} is terrible film, dont watch it never!!!!!! ";
+            switch (mark)
+            {
+                case 1:
+                    return $"{Name} is terrible film, dont watch it never!!!!!! ";
 
-               case 2:
-               return $"Ok,{Name} not good not bad, for an amateur...";
+                case 2:
+                    return $"Ok,{Name} not good not bad, for an amateur...";
 
-               case 3:
-               return $"{Name} is a masterpeace!!! I want to {Country} to take a look at those places!!!";
+                case 3:
+                    return $"{Name} is a masterpeace!!! I want to {Country} to take a look at those places!!!";
 
-               default:
-               return "HI-hi-hi im not watched this film";
-           }
+                default:
+                    return "HI-hi-hi im not watched this film";
+            }
         }
 
         public override string Send(string toWho)
