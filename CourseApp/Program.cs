@@ -45,6 +45,13 @@ namespace CourseApp
 
         public static void Main(string[] args)
         {
+            var pieces = new PieceOfArt[] { new Film(), new Picture() };
+
+            for (int i = 0; i < 2; i++)
+            {
+             Console.WriteLine(pieces[i].Send("Tommy"));
+            }
+
             Console.WriteLine("hELLO");
             List<double> taskA = TaskA(2.25, 1.2, 2.7, 0.3);
 
