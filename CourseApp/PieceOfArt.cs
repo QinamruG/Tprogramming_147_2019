@@ -24,5 +24,10 @@ namespace CourseApp
         public abstract string Send(string toWho);
 
         public new abstract string ToString();
+
+        public virtual string VirtualView()
+        {
+            return "Virtual Method";
+        }
     }
 }
