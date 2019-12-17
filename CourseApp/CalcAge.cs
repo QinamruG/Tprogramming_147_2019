@@ -6,7 +6,7 @@ namespace CourseApp
     {
         private DateTime now = DateTime.Today;
 
-        public string CalculateAge(int day, int month, int year)
+        public string CalculateAge(int day, int month, int year, bool fullAge)
         {
             var birthday = new DateTime(year, month, day);
             var today = DateTime.Today;
@@ -20,8 +20,15 @@ namespace CourseApp
             }
             else
             {
-            var age = new DateTime(today.Ticks - birthday.Ticks);
-            return $"Возраст:{age.Year - 1} лет, {age.Month - 1} месяцев, {age.Day - 1} дней";
+                var age = new DateTime(today.Ticks - birthday.Ticks);
+                if (fullAge == true)
+                {
+                    return $"Возраст:{age.Year - 1} лет, {age.Month - 1} месяцев, {age.Day - 1} дней";
+                }
+                else
+                {
+                    return $"Возраст:{age.Year - 1} лет";
+                }
             }
         }
     }
