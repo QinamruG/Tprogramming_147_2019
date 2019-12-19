@@ -6,10 +6,16 @@ namespace CourseApp
     {
         private DateTime now = DateTime.Today;
 
-        public string CalculateAge(int day, int month, int year, bool fullAge)
+        public string CalculateAge(int day, int month, int year, bool fullAge, bool currentTime)
         {
             var birthday = new DateTime(year, month, day);
             var today = DateTime.Today;
+
+            if (currentTime == false)
+            {
+                today = new DateTime(2019, 12, 19);
+            }
+
             if (birthday.Ticks > now.Ticks)
             {
                 throw new Exception("you cannot enter a date that did not occur");
