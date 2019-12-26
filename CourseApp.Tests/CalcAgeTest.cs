@@ -9,7 +9,7 @@ namespace CourseApp.Tests
         public void CorrectAgeInputTest()
         {
             var yeah = new CalcAge();
-            Assert.Equal(yeah.CalculateAge(12, 3, 2000, 19, 12, 2019, true), $"Возраст:19 лет, 9 месяцев, 8 дней");
+            Assert.Equal(yeah.CalculateAge(18, 12, 2000, 19, 12, 2019, true), $"Возраст:19 лет, 0 месяцев, 1 дней");
         }
 
         [Fact]
