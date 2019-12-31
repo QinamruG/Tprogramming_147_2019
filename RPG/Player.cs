@@ -2,10 +2,24 @@ using System;
 
 namespace RPG
 {
-    public abstract class Player
+    public abstract class Player : IMoves
     {
         private int health;
         private int strenght;
+        public Player Enemy;
+        public Player()
+        {
+        }
+        public Player(string name, int health, int strength, string pClass)
+        {
+            Name = name;
+            Strength = strength;
+            Health = health;
+            PClass = pClass;
+        }
+
+        public string PClass{ get; set; }
+
         public int Health
         {
             get
@@ -45,7 +59,14 @@ namespace RPG
         }
 
         public abstract void Skill();
-
+        public string Skip()
+        {
+            return $"{this.Name} пропустил ход";
+        }
+        public int Attack()
+        {
+            Enemy.Health -= this.Strength;
+        }
     }
 
 }
