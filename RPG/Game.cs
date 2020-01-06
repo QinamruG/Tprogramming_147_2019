@@ -9,9 +9,14 @@ namespace RPG
         {
             var rnd = new Random();
             Console.WriteLine("Введите четное количество игроков");
-            var playerCount = Console.ReadLine();
+            var playerCount = Convert.ToUInt16(Console.ReadLine());
             if(playerCount % 2 == 0)
             {
+                
+
+
+
+
                 
             }
             else  { throw new Exception("Вы должны ввести четное количество игроков"); }

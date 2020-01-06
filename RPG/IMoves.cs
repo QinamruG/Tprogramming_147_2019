@@ -6,7 +6,7 @@ namespace RPG
     {
         string PClass{ get; set; }
         void Skill();
-        int Attack();
+        void Attack();
         string Skip();
 
     }

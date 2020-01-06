@@ -10,12 +10,11 @@ namespace RPG
         public Player()
         {
         }
-        public Player(string name, int health, int strength, string pClass)
+        public Player(string name, int health, int strength)
         {
             Name = name;
             Strength = strength;
             Health = health;
-            PClass = pClass;
         }
 
         public string PClass{ get; set; }
@@ -63,7 +62,7 @@ namespace RPG
         {
             return $"{this.Name} пропустил ход";
         }
-        public int Attack()
+        public void Attack()
         {
             Enemy.Health -= this.Strength;
         }

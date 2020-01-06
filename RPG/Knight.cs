@@ -14,7 +14,7 @@ namespace RPG
         }
         public override void Skill()
         {
-            Enemy.Health -= this.Strength * 1.3;
+            Enemy.Health -= Convert.ToInt32(Math.Round(this.Strength * 1.3));
         }
     }
 
