@@ -73,7 +73,7 @@ namespace CourseApp
             }
 
             var ageKostya = new CalcAge();
-            Console.WriteLine(ageKostya.CalculateAge(28, 6, 2000, true, true));
+            Console.WriteLine(ageKostya.CalculateAge(28, 6, 2000, true));
 
             Console.ReadLine();
         }

@@ -9,7 +9,7 @@ namespace CourseApp.Tests
         public void CorrectAgeInputTest()
         {
             var yeah = new CalcAge();
-            Assert.Equal(yeah.CalculateAge(DateTime.Now.Day - 15, DateTime.Now.Month - 9, DateTime.Now.Year - 19, true, true), $"Возраст:19 лет, 9 месяцев, 16 дней");
+            Assert.Equal(yeah.CalculateAge(18, 12, 2000, 19, 12, 2019, true), $"Возраст:19 лет, 0 месяцев, 1 дней");
         }
 
         [Fact]
@@ -18,7 +18,7 @@ namespace CourseApp.Tests
             var time = new CalcAge();
             try
             {
-                Assert.Equal(time.CalculateAge(16, 12, DateTime.Now.Year + 3, true, false), $"Возраст:19 лет, 5 месяцев, 19 дней");
+                Assert.Equal(time.CalculateAge(16, 6, 2021, 19, 12, 2019, true), $"Возраст:19 лет, 5 месяцев, 19 дней");
             }
             catch
             {
@@ -35,7 +35,7 @@ namespace CourseApp.Tests
             var year = DateTime.Today.Year;
             try
             {
-                Assert.Equal(time.CalculateAge(day, month, year, true, false), $"Возраст:0 лет, 0 месяцев, 0 дней");
+                Assert.Equal(time.CalculateAge(12, 12, 2019, 12, 12, 2019, true), $"Возраст:0 лет, 0 месяцев, 0 дней");
             }
             catch
             {
@@ -49,7 +49,7 @@ namespace CourseApp.Tests
         public void CurrectYearCountTest(int d, int m, int y, int exp)
         {
             var time = new CalcAge();
-            Assert.Equal($"Возраст:{exp} лет", time.CalculateAge(d, m, y, false, false));
+            Assert.Equal($"Возраст:{exp} лет", time.CalculateAge(d, m, y, 19, 12, 2019, false));
         }
     }
 }
