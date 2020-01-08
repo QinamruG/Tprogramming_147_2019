@@ -1,22 +1,26 @@
 using System;
+using System.Collections.Generic;
 
 namespace RPG
 {
     class Archer : Player
     {
-        public Archer()
+        List<string> names = new List<string>() { "Алмиэль", "НеДхойне", "Яевинн", "Йорвет", "Элеас", "Малена", "Хириадан" };
+        public Archer() : base()
         {
-
+            Name = names[rnd.Next(0, names.Count)];
+            PClass = "Лучник";
         }
-        public Archer(string name, int health, int strength):base(name, health, strength)
+
+        /*public Archer() : base(enemy)
         {
-
-        }
+            Name = names[rnd.Next(0, names.Count)];
+            PClass = "Лучник";
+        }*/
         public override void Skill()
         {
-            Enemy.Skip();
-            Enemy.Health -=2;
+            /*Enemy.Skip();
+            Enemy.Health -= 2;*/
         }
     }
-
 }

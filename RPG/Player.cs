@@ -1,70 +1,43 @@
 using System;
+using System.Collections.Generic;
 
 namespace RPG
 {
     public abstract class Player : IMoves
     {
+        Logger LogText = new Logger();
+        //public string plClass;
+        protected Random rnd = new Random();
         private int health;
         private int strenght;
-        public Player Enemy;
+        //public Player Enemy {get; set; }
         public Player()
         {
+            Strength = rnd.Next(10, 30);
+            Health = rnd.Next(10, 70);
         }
-        public Player(string name, int health, int strength)
+        /*public Player(Player enemy)
         {
-            Name = name;
-            Strength = strength;
-            Health = health;
-        }
+            //Enemy = enemy;
+            Strength = rnd.Next(5, 15);
+            Health = rnd.Next(10, 100);
+        }*/
 
-        public string PClass{ get; set; }
-
-        public int Health
-        {
-            get
-            {
-                return this.health;
-            }
-            set
-            {
-                if (value > 0)
-                {
-                    this.health = value;
-                }
-                else
-                {
-                    throw new System.ArgumentOutOfRangeException("U can't enter 0 or less health");
-                }
-            }
-        }
-        public string Name { get; set; }
-        public int Strength
-        {
-            get
-            {
-                return this.strenght;
-            }
-            set
-            {
-                if (value > 0)
-                {
-                    this.strenght = value;
-                }
-                else
-                {
-                    throw new System.ArgumentOutOfRangeException("U can't enter 0 or less strenght");
-                }
-            }
-        }
+        public string PClass { get; protected set; }
+        public int Health { get; set; }
+        public string Name { get; protected set; }
+        public int Strength { get; protected set; }
 
         public abstract void Skill();
         public string Skip()
         {
             return $"{this.Name} пропустил ход";
         }
-        public void Attack()
+        public void Attack(Player Enemy)
         {
-            Enemy.Health -= this.Strength;
+            int damage = rnd.Next(5,this.Strength);
+            Enemy.Health -= damage;
+            LogText.Damage(this,Enemy,damage);
         }
     }
 

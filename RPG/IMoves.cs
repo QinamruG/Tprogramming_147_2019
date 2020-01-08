@@ -1,12 +1,12 @@
 using System;
+using System.Collections.Generic;
 
 namespace RPG
 {
     interface IMoves
     {
-        string PClass{ get; set; }
         void Skill();
-        void Attack();
+        void Attack(Player Enemy);
         string Skip();
 
     }
