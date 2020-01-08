@@ -12,14 +12,10 @@ namespace RPG
             PClass = "Чародей";
         }
 
-        /*public Wizard() : base(enemy)
+        public override void Skill(Player Enemy)
         {
-            Name = names[rnd.Next(0, names.Count)];
-            PClass = "Чародей";
-        }*/
-        public override void Skill()
-        {
-           /* Enemy.Skip(); */
+            Enemy.Euthanasia = true;
+            Logger.WriteLog($"Чародей {this.Name} усыпил {Enemy.Name}({Enemy.PClass})!"); 
         }
     }
 }

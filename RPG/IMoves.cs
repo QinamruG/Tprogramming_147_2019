@@ -5,7 +5,7 @@ namespace RPG
 {
     interface IMoves
     {
-        void Skill();
+        void Skill(Player Enemy);
         void Attack(Player Enemy);
         string Skip();
 

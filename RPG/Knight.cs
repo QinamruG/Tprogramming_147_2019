@@ -10,14 +10,11 @@ namespace RPG
             Name = names[rnd.Next(0, names.Count)];
             PClass = "Рыцарь";
         }
-        /*public Knight() : base(enemy)
+
+        public override void Skill(Player Enemy)
         {
-            Name = names[rnd.Next(0, names.Count)];
-            PClass = "Рыцарь";
-        }*/
-        public override void Skill()
-        {
-            /*Enemy.Health -= Convert.ToInt32(Math.Round(this.Strength * 1.3));*/
+            Enemy.Health -= Convert.ToInt32(Math.Round(this.Strength * 1.3));
+            Logger.WriteLog($"Рыцарь {this.Name} применяет удар возмездия на {Enemy.Name}({Enemy.PClass})!");
         }
     }
 
