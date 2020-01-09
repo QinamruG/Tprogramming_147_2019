@@ -47,5 +47,11 @@ namespace CourseApp.Tests
         {
             Assert.Equal($"Возраст:{exp} лет", CalcAge.CalculateAge(d, m, y, 19, 12, 2019, false));
         }
+
+        [Fact]
+        public void BirthdayTomorrowTest()
+        {
+            Assert.Equal($"Возраст:18 лет, 11 месяцев, 30 дней", CalcAge.CalculateAge(20, 12, 2000, 19, 12, 2019, true));
+        }
     }
 }
