@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 namespace RPG
 {
-    class Knight : Player
+    public class Knight : Player
     {
         List<string> names = new List<string>() { "Яков", "Родерик", "Зигфрид", "Вернон", "Артур", "Ариан", "Дхойне" };
         public Knight() : base()

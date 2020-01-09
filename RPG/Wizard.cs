@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace RPG
 {
-    class Wizard : Player
+    public class Wizard : Player
     {
         List<string> names = new List<string>() { "Трисс", "Шеала", "Йеннифер", "Сабрина", "Демавенд", "Кейра", "Марквар" };
         public Wizard() : base()
