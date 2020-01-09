@@ -2,47 +2,24 @@ using System;
 
 namespace CourseApp
 {
-    public class CalcAge
+    public static class CalcAge
     {
-        private DateTime now = DateTime.Today;
-
-        public string CalculateAge(int day, int month, int year, bool fullAge)
+        public static string CalculateAge(int day, int month, int year, bool fullAge)
         {
-            var birthday = new DateTime(year, month, day);
             var today = DateTime.Today;
-
-            if (birthday.Ticks > now.Ticks)
-            {
-                throw new Exception("you cannot enter a date that did not occur");
-            }
-            else if (birthday.Ticks == now.Ticks)
-            {
-                throw new Exception("he/she/you was born today");
-            }
-            else
-            {
-                var age = new DateTime(today.Ticks - birthday.Ticks);
-                if (fullAge == true)
-                {
-                    return $"Возраст:{age.Year - 1} лет, {age.Month - 1} месяцев, {age.Day - 1} дней";
-                }
-                else
-                {
-                    return $"Возраст:{age.Year - 1} лет";
-                }
-            }
+            return CalcAge.CalculateAge(day, month, year, today.Day, today.Month, today.Year, fullAge);
         }
 
-        public string CalculateAge(int day, int month, int year, int currDay, int currMonth, int currYear, bool fullAge)
+        public static string CalculateAge(int day, int month, int year, int currDay, int currMonth, int currYear, bool fullAge)
         {
             var birthday = new DateTime(year, month, day);
             var today = new DateTime(currYear, currMonth, currDay);
 
-            if (birthday.Ticks > now.Ticks)
+            if (birthday.Ticks > today.Ticks)
             {
                 throw new Exception("you cannot enter a date that did not occur");
             }
-            else if (birthday.Ticks == now.Ticks)
+            else if (birthday.Ticks == today.Ticks)
             {
                 throw new Exception("he/she/you was born today");
             }
