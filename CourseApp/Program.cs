@@ -72,6 +72,8 @@ namespace CourseApp
                 Console.WriteLine($"y={item}");
             }
 
+            Console.WriteLine(CalcAge.CalculateAge(28, 6, 2000, true));
+
             Console.ReadLine();
         }
     }
