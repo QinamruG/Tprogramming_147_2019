@@ -8,8 +8,8 @@ namespace RPG
         protected Random rnd = new Random();
         public Player()
         {
-            Strength = rnd.Next(10, 30);
-            Health = rnd.Next(10, 70);
+            Strength = rnd.Next(10, 25);
+            Health = rnd.Next(25, 70);
         }
         public bool Euthanasia { get; set; } = false;
         public bool Debuff { get; set; } = false;

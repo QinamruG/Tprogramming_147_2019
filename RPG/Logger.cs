@@ -23,7 +23,7 @@ namespace RPG
         }
         public static void WhichCon(int con)
         {
-            Console.WriteLine($"Начинается {con}-й кон!!!\n");
+            Console.WriteLine($"\n --====================-- \n   Начинается {con}-й кон!!!\n --==================--");
         }
         public static void Winner(Player winner, Player looser)
         {
