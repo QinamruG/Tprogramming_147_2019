@@ -5,7 +5,7 @@ namespace RPG
 {
     public static class PlayerManager
     {
-        public static void SelectClass(List<Player> Players, int playerCount)
+        public static void AddPlayers(List<Player> Players, int playerCount)
         {
             var Rnd = new Random();
             for (int n = 0; n < playerCount; n++)
@@ -28,13 +28,12 @@ namespace RPG
         /*public static void SortOpponents()
         {
         }*/
-        public static void WinnerDetermination(Player whoWin, Player whoLose, int winnerHP, List<Player> Players, List<Player> Winners)
+        public static void WinnerDetermination(Player whoWin, Player whoLose, int winnerHP, List<Player> Winners)
         {
             Logger.Winner(whoWin, whoLose);
-            whoWin.Debuff = false;
+            whoWin.Burns = false;
             whoWin.Health = winnerHP;
             Winners.Add(whoWin);
-            // Players.Add(whoWin);
         }
     }
 }

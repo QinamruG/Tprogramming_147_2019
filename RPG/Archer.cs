@@ -14,13 +14,13 @@ namespace RPG
 
         public override void Skill(Player Enemy)
         {
-            if (Enemy.Debuff == true)
+            if (Enemy.Burns == true)
             {
                 this.Attack(Enemy);
             }
             else
             {
-                Enemy.Debuff = true;
+                Enemy.Burns = true;
                 Enemy.Health -= 2;
                 Logger.WriteLog($"Лучник {this.Name} искользует огненные стрелы против {Enemy.Name}({Enemy.PClass})!");
             }

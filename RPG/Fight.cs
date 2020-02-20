@@ -9,7 +9,7 @@ namespace RPG
         {
             var Rnd = new Random();
             var attackOrUseSkill = Rnd.Next(1, 10);
-            if (whoAttacked.Euthanasia == false)
+            if (whoAttacked.Sleeping == false)
             {
                 if (attackOrUseSkill <= 6)
                 {
@@ -20,7 +20,7 @@ namespace RPG
                     whoAttacked.Skill(whoWasAttacked);
                 }
             }
-            whoAttacked.Euthanasia = false;
+            whoAttacked.Sleeping = false;
         }
     }
 

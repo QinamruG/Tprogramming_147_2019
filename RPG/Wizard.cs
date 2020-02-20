@@ -14,7 +14,7 @@ namespace RPG
 
         public override void Skill(Player Enemy)
         {
-            Enemy.Euthanasia = true;
+            Enemy.Sleeping = true;
             Logger.WriteLog($"Чародей {this.Name} усыпил {Enemy.Name}({Enemy.PClass})!"); 
         }
     }

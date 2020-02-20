@@ -11,8 +11,8 @@ namespace RPG
             Strength = rnd.Next(10, 25);
             Health = rnd.Next(25, 70);
         }
-        public bool Euthanasia { get; set; } = false;
-        public bool Debuff { get; set; } = false;
+        public bool Sleeping { get; set; } = false;
+        public bool Burns { get; set; } = false;
         public string PClass { get; protected set; }
         public int Health { get; set; }
         public string Name { get; protected set; }
@@ -25,7 +25,7 @@ namespace RPG
         }
         public void Attack(Player Enemy)
         {
-            if (this.Debuff == true)
+            if (this.Burns == true)
             {
                 this.Health -= 2;
                 Logger.WriteLog($"{this.Name} IS OF FIREE!!!");

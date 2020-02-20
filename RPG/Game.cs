@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 namespace RPG
 {
-    class Game
+    public class Game
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
+            var PowersOfTwo = new int[]{2,4,8,16,32,64,128,256,512,1024};
             var Rnd = new Random();
             Console.WriteLine("Введите четное количество игроков");
             var playerCount = Convert.ToUInt16(Console.ReadLine());
-            if (playerCount/2 % 2 == 0 || playerCount == 2)
+            if (PowersOfTwo.Any(x =>x.Equals(playerCount)))
             {
                 List<Player> Players = new List<Player>();
                 List<Player> Winners = new List<Player>();
 
-                PlayerManager.SelectClass(Players, playerCount);
+                PlayerManager.AddPlayers(Players, playerCount);
 
                 int con = 1;
                 int round = 1;
@@ -25,8 +26,7 @@ namespace RPG
                     Logger.WhichCon(con);
                     while (Players.Count > 1)
                     {
-                        //Logger.WhichCon(con);
-                        Logger.WriteLog($"---------{round}й раунд!------");
+                        Logger.WriteLog($"---------{round}-й раунд!------");
                         int i = Rnd.Next(0, Players.Count);
                         var FirstPlayer = Players[i];
                         Players.RemoveAt(i);
@@ -51,14 +51,14 @@ namespace RPG
                         }
                         if (FirstPlayer.Health < 1)
                         {
-                            PlayerManager.WinnerDetermination(SecondPlayer, FirstPlayer, secPlHP, Players, Winners);
+                            PlayerManager.WinnerDetermination(SecondPlayer, FirstPlayer, secPlHP, Winners);
                         }
                         else if (SecondPlayer.Health < 1)
                         {
-                            PlayerManager.WinnerDetermination(FirstPlayer, SecondPlayer, firstPlHP, Players, Winners);
+                            PlayerManager.WinnerDetermination(FirstPlayer, SecondPlayer, firstPlHP, Winners);
                         }
                         else { throw new Exception("У нас сдаваться запрещено!"); }
-                        //con++;
+
                         round++;
                     }
                     Players.AddRange(Winners.ToArray());
