@@ -1,0 +1,55 @@
+body {
+   background: #f3f2f3;
+   background-image: url(../Styles/images/backgroundBlue.jpg);
+   background-repeat: no-repeat;
+   background-size: 1600px 900px;
+   color: #000000;
+   /*font-family: Trebuchet MS, Arial, Times New Roman; 
+   font-size: 12px;*/
+}
+#name{
+   right: 200px;
+}
+#container {
+   background:#99CC99;
+   margin: 30px auto;
+   width: 900px;
+   height: 600px;
+}
+
+#header {
+   background: #66CCCC;
+   height: 100px;
+   width: 900px;
+}
+
+#navigation {
+   background: #FF9999;
+   width: 900px;
+   height: 20px;
+}
+
+#menu {
+   background: #99CC99;
+   float: right;
+   width: 200px;
+   height: 200px;
+}
+
+#content {
+   background: #99CC99;
+   float: left;
+
+   width: 600px;
+   height: 400px;
+}
+
+#clear {
+   clear:both;
+}
+
+#footer {
+   background: #87b0c9;
+   height: 80px;
+   width: 900px;
+}
