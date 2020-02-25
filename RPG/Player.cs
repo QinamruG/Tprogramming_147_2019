@@ -22,7 +22,7 @@ namespace RPG
         public void Skip()
         {
             if (this.Sleeping == 1)
-                Logger.WriteLog($"{this.Name} пропустил ход");
+                Logger.WriteLog($"*{this.Name} пропустил ход*");
             this.Sleeping -= 1;
         }
         public void Attack(Player Enemy)
@@ -30,7 +30,7 @@ namespace RPG
             if (this.Burns == true)
             {
                 this.Health -= 2;
-                Logger.WriteLog($"{this.Name} IS OF FIREE!!!");
+                Logger.WriteLog($"*{this.Name} получил 2 ед. урона от огня*");
             }
             int damage = rnd.Next(5, this.Strength);
             Enemy.Health -= damage;

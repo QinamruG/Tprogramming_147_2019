@@ -8,6 +8,5 @@ namespace RPG
         void Skill(Player Enemy);
         void Attack(Player Enemy);
         void Skip();
-
     }
 }

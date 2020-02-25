@@ -11,7 +11,7 @@ namespace RPG
             var attackOrUseSkill = Rnd.Next(1, 10);
             if (whoAttacked.Sleeping <= 0)
             {
-                if (attackOrUseSkill <= 6)
+                if (attackOrUseSkill < 6)
                 {
                     whoAttacked.Attack(whoWasAttacked);
                 }
