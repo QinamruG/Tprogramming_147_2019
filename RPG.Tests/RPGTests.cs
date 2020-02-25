@@ -34,7 +34,7 @@ namespace RPG.Tests
             Player Wizard = new Wizard();
             Player Player2 = new Archer();
             Wizard.Skill(Player2);
-            Assert.True(Player2.Euthanasia);
+            Assert.True(Player2.Sleeping > 0);
         }
         [Fact]
         public void TestArcherSkill()
@@ -42,7 +42,7 @@ namespace RPG.Tests
             Player Wizard = new Wizard();
             Player Archer = new Archer();
             Archer.Skill(Wizard);
-            Assert.True(Wizard.Debuff);
+            Assert.True(Wizard.Burns);
         }
 
         [Fact]

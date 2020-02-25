@@ -14,8 +14,8 @@ namespace RPG
 
         public override void Skill(Player Enemy)
         {
-            Enemy.Sleeping = true;
-            Logger.WriteLog($"Чародей {this.Name} усыпил {Enemy.Name}({Enemy.PClass})!"); 
+            Enemy.Sleeping = 2;
+            Logger.WriteLog($"Чародей {this.Name} применил заклинание усыпления на  {Enemy.Name}({Enemy.PClass})!");
         }
     }
 }

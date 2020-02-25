@@ -9,7 +9,7 @@ namespace RPG
         {
             var Rnd = new Random();
             var attackOrUseSkill = Rnd.Next(1, 10);
-            if (whoAttacked.Sleeping == false)
+            if (whoAttacked.Sleeping <= 0)
             {
                 if (attackOrUseSkill <= 6)
                 {
@@ -20,8 +20,10 @@ namespace RPG
                     whoAttacked.Skill(whoWasAttacked);
                 }
             }
-            whoAttacked.Sleeping = false;
+            else
+            {
+                whoAttacked.Skip();
+            }
         }
     }
-
 }

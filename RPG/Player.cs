@@ -11,7 +11,7 @@ namespace RPG
             Strength = rnd.Next(10, 25);
             Health = rnd.Next(25, 70);
         }
-        public bool Sleeping { get; set; } = false;
+        public int Sleeping { get; set; } = 0;
         public bool Burns { get; set; } = false;
         public string PClass { get; protected set; }
         public int Health { get; set; }
@@ -19,9 +19,11 @@ namespace RPG
         public int Strength { get; protected set; }
 
         public abstract void Skill(Player Enemy);
-        public string Skip()
+        public void Skip()
         {
-            return $"{this.Name} пропустил ход";
+            if (this.Sleeping == 1)
+                Logger.WriteLog($"{this.Name} пропустил ход");
+            this.Sleeping -= 1;
         }
         public void Attack(Player Enemy)
         {
