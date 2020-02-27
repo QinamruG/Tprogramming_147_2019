@@ -1,4 +1,4 @@
-// Вариант 22
+﻿// Вариант 22
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,7 +7,6 @@ namespace CourseApp
 {
     public class Program
     {
-
         public static double MyFunction(double a, double x)
         {
             var lg = Math.Log10(Math.Pow(x, 2) - 1);

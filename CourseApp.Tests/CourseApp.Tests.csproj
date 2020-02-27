@@ -5,7 +5,10 @@
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
     <NoWarn>1573,1591,1701;1702;1705</NoWarn>
     <IsPackable>True</IsPackable>
+<<<<<<< HEAD
 
+=======
+>>>>>>> Konstantin_Tyukalov
   </PropertyGroup>
 
   <ItemGroup>
