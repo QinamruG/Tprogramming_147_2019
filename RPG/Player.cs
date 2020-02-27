@@ -17,6 +17,7 @@ namespace RPG
         public int Health { get; set; }
         public string Name { get; protected set; }
         public int Strength { get; protected set; }
+        protected delegate void Skills(Player Enemy);
 
         public abstract void Skill(Player Enemy);
         public void Skip()

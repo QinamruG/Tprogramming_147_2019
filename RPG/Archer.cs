@@ -5,6 +5,14 @@ namespace RPG
 {
     public class Archer : Player
     {
+        Skills[] skillArray = new Player.Skills[]
+        {
+            (enemy) =>
+            {
+                enemy.Health -=10;
+                Logger.WriteLog("ДЕЛЕГАТ ");
+            }
+        };
         List<string> names = new List<string>() { "Алмиэль", "НеДхойне", "Яевинн", "Йорвет", "Элеас", "Малена", "Хириадан" };
         public Archer() : base()
         {
@@ -14,6 +22,7 @@ namespace RPG
 
         public override void Skill(Player Enemy)
         {
+            skillArray[0](Enemy);
             if (Enemy.Burns == true)
             {
                 this.Hit(Enemy);
