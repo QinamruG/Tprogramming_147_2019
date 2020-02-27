@@ -13,7 +13,7 @@ namespace RPG
             {
                 if (attackOrUseSkill < 6)
                 {
-                    whoAttacked.Attack(whoWasAttacked);
+                    whoAttacked.Hit(whoWasAttacked);
                 }
                 else
                 {

@@ -16,7 +16,7 @@ namespace RPG
         {
             if (Enemy.Burns == true)
             {
-                this.Attack(Enemy);
+                this.Hit(Enemy);
             }
             else
             {

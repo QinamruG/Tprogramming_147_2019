@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace RPG
 {
-    public abstract class Player : IMoves
+    public abstract class Player
     {
         protected Random rnd = new Random();
         public Player()
@@ -25,7 +25,7 @@ namespace RPG
                 Logger.WriteLog($"*{this.Name} пропустил ход*");
             this.Sleeping -= 1;
         }
-        public void Attack(Player Enemy)
+        public void Hit(Player Enemy)
         {
             if (this.Burns == true)
             {
