@@ -1,43 +1,44 @@
-﻿using System;
+// Вариант 22
+using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace CourseApp
 {
     public class Program
     {
-        public static double MyFunction(double a, double b, double x)
+
+        public static double MyFunction(double a, double x)
         {
-            var c = (b * x) + (a / x);
+            var lg = Math.Log10(Math.Pow(x, 2) - 1);
+
+            var c = Math.Pow(a, Math.Pow(x, 2) - 1) - lg + Math.Pow(Math.Pow(x, 2) - 1, 1 / 3);
             return c;
         }
 
-        public static double[] TaskA (
-                                     double a,
-                                     double b,
-                                     double xn,
-                                     double xk,
-                                     double dx)
+        public static List<double> TaskA(
+                                         double a,
+                                         double xn,
+                                         double xk,
+                                         double dx)
         {
-            var steps = (int)Math.Floor((xk - xn) / dx);
-            var y = new double[steps];
-            var i = 0;
+            List<double> y = new List<double>();
             for (var x = xn; x < xk; x += dx)
             {
-                y[i] = MyFunction(a, b, x);
-                i++;
+                y.Add(MyFunction(a, x));
             }
 
             return y;
         }
 
-        public static double[] TaskB (
+        public static List<double> TaskB(
                                  double a,
-                                 double b,
-                                 double[] x)
+                                 List<double> x)
         {
-            var y = new double[x.Length];
-            for (int i = 0; i < x.Length; i++)
+            List<double> y = new List<double>(5);
+            foreach (double i in x)
             {
-                y[i] = MyFunction(a, b, x[i]);
+                y.Add(MyFunction(a, i));
             }
 
             return y;
@@ -45,24 +46,34 @@ namespace CourseApp
 
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            var taskA = TaskA(2, 3, 0, 5, 1);
-            Console.WriteLine(taskA);
+            var pieces = new PieceOfArt[] { new Film(), new Picture() };
 
-            for (var i = 0; i < taskA.Length; i++)
+            for (int i = 0; i < 2; i++)
             {
-                Console.WriteLine($"y={taskA[i]}");
+             Console.WriteLine(pieces[i].Send("Tommy"));
             }
 
-            var xB = new double[] { 0, 1, 2, 3 };
-            var taskB = TaskB(2, 3, xB);
-            for (var i = 0; i < xB.Length; i++)
+            Console.WriteLine("hELLO");
+            List<double> taskA = TaskA(2.25, 1.2, 2.7, 0.3);
+
+            foreach (var item in taskA)
             {
-                Console.WriteLine($"x={xB[i]} y={taskB[i]}");
+                Console.WriteLine($"y={item}");
             }
 
-            var item = new Platypus();
-            Console.WriteLine(item.View());
+            List<double> xB = new List<double>() { 1.31, 1.39, 1.44, 1.56, 1.92 };
+            List<double> taskB = TaskB(2, xB);
+            for (int i = 0; i < 5; i++)
+            {
+                Console.WriteLine($"x={xB[i]}");
+            }
+
+            foreach (var item in taskB)
+            {
+                Console.WriteLine($"y={item}");
+            }
+
+            Console.WriteLine(CalcAge.CalculateAge(28, 6, 2000, true));
 
             Console.ReadLine();
         }

@@ -1,2 +1,1 @@
-# Tprogramming_147_2019
-Konstantinov Eugeny
+Konstantin Tyukalov 2/147
