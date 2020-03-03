@@ -17,13 +17,19 @@ namespace RPG
         public int Health { get; set; }
         public string Name { get; protected set; }
         public int Strength { get; protected set; }
+        public ISkill skills;
         protected delegate void Skills(Player Enemy);
 
-        public abstract void Skill(Player Enemy);
+        public  virtual void Skill(Player Enemy)
+        {
+            skills.Skill(this,Enemy);
+        }
         public void Skip()
         {
             if (this.Sleeping == 1)
+            {
                 Logger.WriteLog($"*{this.Name} пропустил ход*");
+            }
             this.Sleeping -= 1;
         }
         public void Hit(Player Enemy)

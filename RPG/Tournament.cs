@@ -33,8 +33,10 @@ namespace RPG
                         i = Rnd.Next(0, Players.Count - 1);
                         var SecondPlayer = Players[i];
                         Players.RemoveAt(i);
+
                         int firstPlHP = FirstPlayer.Health;
                         int secPlHP = SecondPlayer.Health;
+
                         var whoIsAttack = Rnd.Next(1, 3);
                         while (FirstPlayer.Health > 0 && SecondPlayer.Health > 0)
                         {
@@ -67,7 +69,6 @@ namespace RPG
                     round = 1;
                 }
                 Logger.WriteLog($"\n========================\n{Players[0].Name}({Players[0].PClass}) выигрывает соревнование!!\n========================");
-
             }
             else { throw new Exception("Неправильно задано количество игроков"); }
         }

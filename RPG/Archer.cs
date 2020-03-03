@@ -18,9 +18,10 @@ namespace RPG
         {
             Name = names[rnd.Next(0, names.Count)];
             PClass = "Лучник";
+            skills = new ArcherSkills();
         }
 
-        public override void Skill(Player Enemy)
+        /*public override void Skill(Player Enemy)
         {
             skillArray[0](Enemy);
             if (Enemy.Burns == true)
@@ -33,6 +34,6 @@ namespace RPG
                 Enemy.Health -= 2;
                 Logger.WriteLog($"Лучник {this.Name} искользует огненные стрелы против {Enemy.Name}({Enemy.PClass})!");
             }
-        }
+        }*/
     }
 }
