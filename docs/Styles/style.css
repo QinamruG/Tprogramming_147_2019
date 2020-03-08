@@ -1,15 +1,13 @@
-body {
+html,body {
     background: #f3f2f3;
     background-image: url(../Styles/images/backgroundBlue.jpg);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: auto;
     color: #000000;
-    /*font-family: Trebuchet MS, Arial, Times New Roman; 
-   font-size: 12px;*/
 }
 
 #name {
-    right: 200px;
+    right: 20px;
 }
 
 #container {
@@ -17,7 +15,7 @@ body {
     margin: 30px auto;
     border-radius: 30px;
     width: 900px;
-    height: 600px;
+    height: 900px;
 }
 
 #header {
@@ -29,15 +27,11 @@ body {
     border-width: 1px;
 }
 
-#navigation {
-    background: #FF9999;
-    width: 900px;
-    height: 20px;
-}
-
-#menu {
+#skills {
     background: rgb(25, 192, 184);
     float: right;
+    margin-right: 50px;
+    margin-top: 70px;
     width: 200px;
     height: 200px;
     border-radius: 30px;
@@ -61,98 +55,18 @@ body {
     border-radius: 10px;
 }
 
-@import url('https://fonts.googleapis.com/css?family=Ubuntu+Condensed');
-.menu-main {
-    list-style: none;
-    margin: 10px 0 5px;
-    padding: 25px 0 5px;
-    text-align: center;
-    background: rgb(117, 231, 222);
-}
-
-.menu-main li {
-    display: inline-block;
-}
-
-.menu-main li:after {
-    content: "|";
-    color: #c70c0c;
-    display: inline-block;
-    vertical-align: top;
-}
-
-.menu-main li:last-child:after {
-    content: none;
-}
-
-.menu-main a {
-    text-decoration: none;
-    font-family: 'Ubuntu Condensed', sans-serif;
-    letter-spacing: 2px;
-    position: relative;
-    padding-bottom: 20px;
-    margin: 0 34px 0 30px;
-    font-size: 17px;
-    text-transform: uppercase;
-    display: inline-block;
-    transition: color .2s;
-}
-
-.menu-main a,
-.menu-main a:visited {
-    color: #c90dc9;
-}
-
-.menu-main a.current,
-.menu-main a:hover {
-    color: #feb386;
-}
-
-.menu-main a:before,
-.menu-main a:after {
-    content: "";
-    position: absolute;
-    height: 4px;
-    top: auto;
-    right: 50%;
-    bottom: -5px;
-    left: 50%;
-    background: #feb386;
-    transition: .8s;
-}
-
-.menu-main a:hover:before,
-.menu-main .current:before {
-    left: 0;
-}
-
-.menu-main a:hover:after,
-.menu-main .current:after {
-    right: 0;
-}
-
-@media (max-width: 550px) {
-    .menu-main {
-        padding-top: 0;
-    }
-    .menu-main li {
-        display: block;
-    }
-    .menu-main li:after {
-        content: none;
-    }
-    .menu-main a {
-        padding: 25px 0 20px;
-        margin: 0 30px;
-    }
-}
-
 h6 {
     margin-left: 20px;
 }
+h1{
+    text-align: center;
+    margin-top: 13px;
+}
 
-nav {
+.nav {
     margin-left: 10px;
+    margin-right: 20px;
+    float: right;
 }
 
 ul.hr {
@@ -163,4 +77,29 @@ ul.hr {
 ul.hr li {
     display: inline;
     margin-right: 5px;
+}
+
+#text {
+    margin-top: 10px;
+    float: 0.5;
+    margin-right: 75px;
+    margin-left: 220px;
+}
+#avatar{
+    float: left;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+h3,h5{
+    text-align: center;
+}
+#copyright{
+    float: right;
+    margin-right: 20px;
+    margin-top: 30px;
+}
+#mail{
+    float: left;
+    margin-top: 10px;
+    margin-left: 50px;    
 }
