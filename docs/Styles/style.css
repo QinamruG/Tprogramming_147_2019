@@ -140,15 +140,25 @@ h3, h5 {
 #copyright {
     float: right;
     margin-right: 20px;
-    margin-top: 30px;
-}
-
-#mail {
-    float: left;
-    margin-top: 10px;
-    margin-left: 50px;
+    margin-top: 50px;
 }
 
 .bold-font {
     font-weight: 500;
+}
+
+#footerContacts {
+    float: left;
+    padding-top: 22px;
+    padding-left: 20px;
+}
+
+ul.footerContacts li {
+    margin-left: 5px;
+    list-style-type: none;
+    font-size: 19px;
+}
+
+#intendation {
+    padding-right: 10px;
 }
