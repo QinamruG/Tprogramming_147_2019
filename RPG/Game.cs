@@ -5,6 +5,7 @@ namespace RPG
 {
     public class Game
     {
+        public List<ICurse> AllCurses = new List<ICurse>(){new Burn(), new Sleeping()};
         public static void Main(string[] args)
         {
             Console.WriteLine("Начать турнир?(y/n)");

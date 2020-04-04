@@ -5,6 +5,8 @@ namespace RPG
 {
     public class Tournament
     {
+        public List<ICurse> AllCurses = new List<ICurse>(){new Burn(), new Sleeping()};
+        //public List<IAction> AllActions = new List<IAction>(){new BasicHit(), new FireArrows() };
         public void StartTournament()
         {
             var PowersOfTwo = new int[] { 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024 };
