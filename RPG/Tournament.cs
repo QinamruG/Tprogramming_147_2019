@@ -5,13 +5,11 @@ namespace RPG
 {
     public class Tournament
     {
-        public List<ICurse> AllCurses = new List<ICurse>(){new Burn(), new Sleeping()};
-        //public List<IAction> AllActions = new List<IAction>(){new BasicHit(), new FireArrows() };
         public void StartTournament()
         {
             var PowersOfTwo = new int[] { 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024 };
             var Rnd = new Random();
-            Console.WriteLine("Введите четное количество игроков");
+            Console.WriteLine("Введите корректное число игроков");
             var playerCount = Convert.ToUInt16(Console.ReadLine());
             if (PowersOfTwo.Any(x => x.Equals(playerCount)))
             {
@@ -72,7 +70,7 @@ namespace RPG
                 }
                 Logger.WriteLog($"\n========================\n{Players[0].Name}({Players[0].PClass}) выигрывает соревнование!!\n========================");
             }
-            else { throw new Exception("Неправильно задано количество игроков"); }
+            else { throw new Exception("Неправильно задано число игроков"); }
         }
     }
 

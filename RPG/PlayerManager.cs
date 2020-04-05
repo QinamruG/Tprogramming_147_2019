@@ -13,12 +13,12 @@ namespace RPG
                 int playerClass = Rnd.Next(1, 4);
                 switch (playerClass)
                 {
-                    /*case 1:
+                    case 1:
                         Players.Add(new Wizard());
                         break;
                     case 2:
                         Players.Add(new Knight());
-                        break;*/
+                        break;
                     default:
                         Players.Add(new Archer());
                         break;
@@ -42,6 +42,12 @@ namespace RPG
         public static void WinnerDetermination(Player whoWin, Player whoLose, int winnerHP, List<Player> Winners)
         {
             Logger.Winner(whoWin, whoLose);
+            whoWin.Curses.Clear();
+            whoWin.Actions.AddRange(whoWin.EndedActions);
+            for (int i = 0; i < whoWin.Actions.Count; i++)
+            {
+                whoWin.Actions[i].ActionRange = whoWin.Actions[i].BasicRange;
+            }
             whoWin.Health = winnerHP;
             Winners.Add(whoWin);
         }
