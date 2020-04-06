@@ -4,11 +4,12 @@ namespace RPG
     {
         public Burn()
         {
-            CurseDuration  = 1;
+            CurseDuration = 3;
         }
         public string CurseName { get; set; } = "Огонь";
         public int CurseDamage { get; set; } = 2;
-        public int CurseDuration { get; set; } = -1;
+        public int CurseDuration { get; set; } = 3;
+        public int BasicDuration { get; set; } = 3;
         public bool Skipping { get; set; } = false;
     }
 }

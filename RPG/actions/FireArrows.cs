@@ -4,7 +4,7 @@ namespace RPG
 {
     public class FireArrows : IAction
     {
-        const int actRange = 1;
+        const int actRange = 2;
         public string ActionName { get; set; } = "Огненная стрела";
         public int ActionRange { get; set; } = actRange;
         public int BasicRange { get; set; } = actRange;

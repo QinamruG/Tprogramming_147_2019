@@ -8,7 +8,7 @@ namespace RPG
         List<string> names = new List<string>() { "Алмиэль", "НеДхойне", "Яевинн", "Йорвет", "Элеас", "Малена", "Хириадан" };
         public Archer() : base()
         {
-            Actions = new List<IAction>() { new BasicHit(), new FireArrows() };
+            Actions = new List<IAction>() { new BasicHit(), new FireArrows(), new Euthanasia() };
             Curses = new List<ICurse>();
             EndedActions = new List<IAction>();
             Name = names[rnd.Next(0, names.Count)];

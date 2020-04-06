@@ -44,9 +44,14 @@ namespace RPG
             Logger.Winner(whoWin, whoLose);
             whoWin.Curses.Clear();
             whoWin.Actions.AddRange(whoWin.EndedActions);
+            whoWin.EndedActions.Clear();
             for (int i = 0; i < whoWin.Actions.Count; i++)
             {
                 whoWin.Actions[i].ActionRange = whoWin.Actions[i].BasicRange;
+                if (whoWin.Actions[i].ActionCurse != null)
+                {
+                    whoWin.Actions[i].ActionCurse.CurseDuration = whoWin.Actions[i].ActionCurse.BasicDuration;
+                }
             }
             whoWin.Health = winnerHP;
             Winners.Add(whoWin);
