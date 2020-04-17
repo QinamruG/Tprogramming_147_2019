@@ -56,5 +56,6 @@ namespace RPG
             whoWin.Health = winnerHP;
             Winners.Add(whoWin);
         }
+        //public static void getRandomPlayer()
     }
 }

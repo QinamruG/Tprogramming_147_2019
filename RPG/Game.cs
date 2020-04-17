@@ -5,7 +5,7 @@ namespace RPG
 {
     public class Game
     {
-        public List<ICurse> AllCurses = new List<ICurse>(){new Burn(), new Sleeping()};
+        int[] PowersOfTwo = new int[] { 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024 };
         public static void Main(string[] args)
         {
             Console.WriteLine("Начать турнир?(y/n)");

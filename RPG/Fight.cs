@@ -8,14 +8,28 @@ namespace RPG
     {
         public static void Attack(Player whoAttacked, Player whoWasAttacked)  // атака
         {
+            // 1 - Мы запрашиваем у Игрока - дай мне атаку
+            // Передаем атаку атакуемому - просим сказать сколько он получил урона / осталось жизни
+            var attackAction = whoAttacked.GetAction();            
+            if (attackAction){
+                whoWasAttacked.GetDamage(attackAction);
+
+            } else {
+                // Лог про пропуск хода
+            }
+            // Вот тут заканчивается этот метод
+
+
+
+
             var rnd = new Random();
-            // whoAttacked.Actions.OrderBy(x => x.ActionRange);
-            var availableActions = whoAttacked.Actions.FindAll(x => x.ActionRange != 0);
-            int numberOfAction = rnd.Next(0, availableActions.Count);
+            //var availableActions = whoAttacked.Actions.FindAll(x => x.ActionRange != 0);
+            //var availableActions = whoAttacked.ReturnAvailableActions();
+            int numberOfAction = rnd.Next(0, whoAttacked.ReturnAvailableActions().Count);
 
             if (whoAttacked.Curses.Count != 0) // проверка на проклятия
             {
-                if (!whoAttacked.Curses.Any(x => x.Skipping == true)) // проверка на пропуск хода  
+                if (/*!whoAttacked.Curses.Any(x => x.Skipping == true)*/ whoAttacked.CanMove()) // проверка на пропуск хода  
                 {
                     UseAction();
                 }
@@ -38,16 +52,17 @@ namespace RPG
 
             void UseAction()
             {
-                whoWasAttacked.Health -= whoAttacked.Actions[numberOfAction].ActionDamage;     // урон
+                //whoWasAttacked.Health -= whoAttacked.Actions[numberOfAction].ActionDamage;     // урон
+                whoWasAttacked.Health -= whoAttacked.ReturnDamage(whoAttacked.Actions[numberOfAction]);
 
-                if (whoAttacked.Actions[numberOfAction].ActionCurse != null && !whoWasAttacked.Curses.Any(x => x.CurseName == whoAttacked.Actions[numberOfAction].ActionCurse.CurseName))                   // добавление проклятия
+                if (whoAttacked.Actions[numberOfAction].ActionCurse != null && !whoWasAttacked.Curses.Any(x => x.CurseName == whoAttacked.Actions[numberOfAction].ActionCurse.CurseName))  // добавление проклятия
                 {
                     whoAttacked.Actions[numberOfAction].ActionCurse.CurseDuration = whoAttacked.Actions[numberOfAction].ActionCurse.BasicDuration;
                     whoWasAttacked.Curses.Add(whoAttacked.Actions[numberOfAction].ActionCurse);
                 }
                 whoAttacked.Actions[numberOfAction].ActionRange--;
 
-                Logger.WriteLog($"--{whoAttacked.Name}({whoAttacked.PClass}) применил '{whoAttacked.Actions[numberOfAction].ActionName}' и нанес {whoAttacked.Actions[numberOfAction].ActionDamage} ед. урона! {whoAttacked.Actions[numberOfAction].ActionRange} осталось --");
+                Logger.WriteLog($"--{whoAttacked.Name}({whoAttacked.PClass}) применил '{whoAttacked.Actions[numberOfAction].ActionName}' и нанес {whoAttacked.ReturnDamage(whoAttacked.Actions[numberOfAction])} ед. урона! {whoAttacked.Actions[numberOfAction].ActionRange} осталось --");
 
                 if (whoAttacked.Actions[numberOfAction].ActionRange == 0)
                 {

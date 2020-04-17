@@ -10,11 +10,11 @@ namespace RPG
 
         Random rnd = new Random();
         const int actRange = -1;
-        public string ActionName { get; set; } = "Обычный удар";
-        public int ActionRange { get; set; } = actRange; // допустимое кол-во использований
-        public int BasicRange { get; set; } = actRange;
-        public int ActionDamage { get; set; } = 1;
-        public ICurse ActionCurse { get; set; } = null;
+        public string Name { get; set; } = "Обычный удар";
+        public int Range { get; set; } = actRange; // допустимое кол-во использований
+        public int Count { get; set; } = actRange;
+        public int Damage { get; set; } = 1;
+        public ICurse Curse { get; set; } = null;
 
     }
 }
