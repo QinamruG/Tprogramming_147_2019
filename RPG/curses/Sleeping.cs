@@ -4,12 +4,12 @@ namespace RPG
     {
         public Sleeping()
         {
-            CurseDuration = 2;
+            Range = 2;
         }
-        public string CurseName { get; set; } = "Сон";
-        public int CurseDamage { get; set; } = 0;
-        public int CurseDuration { get; set; } = 2;
-        public int BasicDuration { get; set; } = 2;
+        public string Name { get; set; } = "Сон";
+        public int Damage { get; set; } = 0;
+        public int Range { get; set; } = 2;
+        public int BaseRange { get; set; } = 2;
         public bool Skipping { get; set; } = true;
     }
 }

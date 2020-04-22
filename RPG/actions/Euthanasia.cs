@@ -5,10 +5,10 @@ namespace RPG
     public class Euthanasia : IAction
     {
         const int actRange = 2;
-        public string ActionName { get; set; } = "Усыпление";
-        public int ActionRange { get; set; } = actRange;
-        public int BasicRange { get; set; } = actRange;
-        public int ActionDamage { get; set; } = 5;
-        public ICurse ActionCurse { get; set; } = new Sleeping();
+        public string Name { get; set; } = "Усыпление";
+        public int Range { get; set; } = actRange;
+        public int BaseRange { get; set; } = actRange;
+        public int Damage { get; set; } = 5;
+        public ICurse Curse { get; set; } = new Sleeping();
     }
 }

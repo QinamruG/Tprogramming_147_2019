@@ -42,18 +42,19 @@ namespace RPG
         public static void WinnerDetermination(Player whoWin, Player whoLose, int winnerHP, List<Player> Winners)
         {
             Logger.Winner(whoWin, whoLose);
-            whoWin.Curses.Clear();
+            whoWin.ReturnToBasic();
+            /*whoWin.Curses.Clear();
             whoWin.Actions.AddRange(whoWin.EndedActions);
-            whoWin.EndedActions.Clear();
-            for (int i = 0; i < whoWin.Actions.Count; i++)
+            whoWin.EndedActions.Clear();*/
+            /*for (int i = 0; i < whoWin.Actions.Count; i++)
             {
-                whoWin.Actions[i].ActionRange = whoWin.Actions[i].BasicRange;
-                if (whoWin.Actions[i].ActionCurse != null)
+                whoWin.Actions[i].Range = whoWin.Actions[i].BaseRange;
+                if (whoWin.Actions[i].Curse != null)
                 {
-                    whoWin.Actions[i].ActionCurse.CurseDuration = whoWin.Actions[i].ActionCurse.BasicDuration;
+                    whoWin.Actions[i].ActionCurse.Range = whoWin.Actions[i].ActionCurse.BaseRange;
                 }
             }
-            whoWin.Health = winnerHP;
+            whoWin.Health = winnerHP;*/
             Winners.Add(whoWin);
         }
         //public static void getRandomPlayer()

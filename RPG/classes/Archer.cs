@@ -6,19 +6,29 @@ namespace RPG
     public class Archer : Player
     {
         List<string> names = new List<string>() { "Алмиэль", "НеДхойне", "Яевинн", "Йорвет", "Элеас", "Малена", "Хириадан" };
-        public Archer(int strenght, int hp, string name) : base(strenght, hp)
+        public Archer(): base()
         {
-            Actions = new List<IAction>() { new BasicHit(), new FireArrows(), new Euthanasia() };
+            Actions = new List<IAction>() { new BasicHit(), new Euthanasia(), new FireArrows() };
             Curses = new List<ICurse>();
             EndedActions = new List<IAction>();
-            Name = name;
             PClass = "Лучник";
+            Name = names[rnd.Next(0, names.Count)];
         }
-        public Archer(int strenght, int hp) : this(strenght, hp, names[rnd.Next(0, names.Count)])
+        public Archer(int strenght, int hp, string name) : base(strenght, hp)
         {
+            Actions = new List<IAction>() { new BasicHit(), new Euthanasia(), new FireArrows() };
+            Curses = new List<ICurse>();
+            EndedActions = new List<IAction>();
+            PClass = "Лучник";
+            Name = name;
         }
-        public Archer() : this(rnd.Next(10, 25), rnd.Next(70, 120))
+        public Archer(int strenght, int hp) : base(strenght, hp)
         {
+            Actions = new List<IAction>() { new BasicHit(), new Euthanasia(), new FireArrows() };
+            Curses = new List<ICurse>();
+            EndedActions = new List<IAction>();
+            PClass = "Лучник";
+            Name = names[rnd.Next(0, names.Count)];
         }
     }
 }

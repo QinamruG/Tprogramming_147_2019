@@ -6,63 +6,88 @@ namespace RPG
 {
     public abstract class Player
     {
+        protected int baseHP;
         protected Random rnd = new Random();
+        public Player()
+        {
+            Strength = rnd.Next(10, 25);
+            Health = rnd.Next(70, 120);
+            baseHP = Health;
+        }
         public Player(int strenght, int hp)
         {
             Strength = strenght;
             Health = hp;
-        }
-        public Player() : this(rnd.Next(10, 25), rnd.Next(70, 120))
-        {
+            baseHP = Health;
         }
         public string PClass { get; protected set; }
         public int Health { get; set; }
         public string Name { get; protected set; }
-        public int Strength { get; protected set; } // нужна ли ?
+        public int Strength { get; protected set; }
         protected List<IAction> Actions { get; set; }  // его умения
         protected List<IAction> EndedActions { get; set; }
         protected List<ICurse> Curses { get; set; }   // наложенные на него проклятия
 
-        public int ReturnDamage(IAction action)
+        public IAction GetAction()
         {
-            return Convert.ToInt16(action.ActionDamage * Math.Log10(this.Strength));
-        }
+            if (this.CanMove())  // Проверить Curse - нет ли заклятия пропуска хода
+            {
+                var numberOfAction = rnd.Next(0, this.ReturnAvailableActions().Count);
 
+                this.Actions[numberOfAction].Damage = ReturnDamage(this.Actions[numberOfAction]);  // у Action'a должна учитываться сила игрока
+
+                this.Actions[numberOfAction].Range--;        // проверить - не надо ли удалить из-за того, что счетчик использований закончился
+                if (this.Actions[numberOfAction].Range == 0)
+                {
+                    this.EndedActions.Add(this.Actions[numberOfAction]);
+                    /*this.Actions.Remove(this.Actions[numberOfAction]);
+                    return null;*/
+                }
+                return this.Actions[numberOfAction];
+            }
+            return null;
+        }
         public int GetDamage(IAction action)
         {
-            // 1 - применитб урон (с учетом силы того, кто ударил)
-            this.Health -= action.Damage;           
-            // Необходимо применить пассивный урон от всех уже наложенных проклятий
-            foreach(var curse in this.Curses)
+            this.Health -= action.Damage;
+            Logger.WriteLog($"{this.Name} получил {action.Damage} ед. урона от способности {action.Name} {action.Range} осталось");
+
+            foreach (var curse in this.Curses)  // Необходимо применить пассивный урон от всех уже наложенных проклятий
             {
                 this.Health -= curse.Damage;
-                // проверять не закончилось ли действие проклятия и удалять его
-            }    
+                curse.Range--;
+                Logger.WriteLog($"Проклятье {curse.Name} нанесло {curse.Damage} ед. урона {curse.Range} осталось");
+            }
+            this.Curses.RemoveAll(x=>x.Range == 0);
 
-            if (action.Curse)
+            if (action.Curse != null)
             {
                 this.Curses.Add(action.Curse);
             }
-
+            return action.Damage;
         }
-
-        public List<IAction> ReturnAvailableActions()
+        public void ReturnToBasic()
         {
-            var a = this.Actions;
-            a.RemoveAll(x => x.ActionRange == 0);
-            return a;
+            this.Curses.Clear();
+            this.Actions.AddRange(this.EndedActions);
+            this.EndedActions.Clear();
+            for (int i = 0; i < this.Actions.Count; i++)
+            {
+                this.Actions[i].Range = this.Actions[i].BaseRange;
+                if (this.Actions[i].Curse != null)
+                {
+                    this.Actions[i].Curse.Range = this.Actions[i].Curse.BaseRange;
+                }
+            }
+            this.Health = baseHP;
         }
-
-        public ICurse ReturnCurse(IAction action)
+        public int ReturnDamage(IAction action)
         {
-            if (action.ActionCurse != null)
-            {
-                return action.ActionCurse;
-            }
-            else
-            {
-                return null;
-            }
+            return Convert.ToInt16(action.Damage * Math.Log10(this.Strength));
+        }
+        public void GetCurse(ICurse curse)
+        {
+            this.Curses.Add(curse);
         }
         public bool CanMove()
         {
@@ -75,28 +100,11 @@ namespace RPG
                 return false;
             }
         }
-
-        IAction GetAction()
+        protected List<IAction> ReturnAvailableActions()
         {
-
-            //Проверить Curse - нет ли заклятия пропуска хода
-            if (this.CanMove())
-            {
-                var i = rnd.Next(0, this.Actions.Count);
-                // у Action'a должна учитываться сила игрока
-                // проверить - не надо ли удалить из-за того, что счетчик использований закончился
-                return this.Actions[i];
-            }
-            return null;
+            // var a = this.Actions;
+            this.Actions.RemoveAll(x => x.Range == 0);
+            return this.Actions;
         }
-
-
-        /*public void UseAction(List<IAction> actions)
-        {
-            if(actions[rnd.Next(0,actions.Count)].ActionRange != 0)
-            {
-                
-            }
-        }*/
     }
 }
