@@ -19,40 +19,22 @@ namespace RPG.Tests
             Player Player2 = new Archer();
             while (Player1.Health > 0 && Player2.Health > 0)
             {
-                Player1.Attack(Player2);
-                Player2.Attack(Player1);
+                Fight.Attack(Player2,Player1);
+                Fight.Attack(Player1,Player2);
             }
             if (Player1.Health > 0 && Player2.Health > 0)
             {
                 Assert.True(true);
             }
         }
-
         [Fact]
-        public void TestWizardSkill()
+        public void TestReturnToBasic()
         {
-            Player Wizard = new Wizard();
-            Player Player2 = new Archer();
-            Wizard.Skill(Player2);
-            Assert.True(Player2.Sleeping > 0);
-        }
-        [Fact]
-        public void TestArcherSkill()
-        {
-            Player Wizard = new Wizard();
-            Player Archer = new Archer();
-            Archer.Skill(Wizard);
-            Assert.True(Wizard.Burns);
-        }
-
-        [Fact]
-        public void DamageTest()
-        {
-            Player Player1 = new Knight();
-            Player Player2 = new Archer();
-            int health = Player1.Health;
-            Player2.Attack(Player1);
-            Assert.True(health > Player1.Health);
+            var player = new Knight();
+            var hp = player.Health;
+            player.Health -= 20;
+            player.ReturnToBasic();
+            Assert.Equal(hp, player.Health);
         }
     }
 }

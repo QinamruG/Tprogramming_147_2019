@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace RPG
 {
@@ -39,24 +40,22 @@ namespace RPG
 
         }*/
 
-        public static void WinnerDetermination(Player whoWin, Player whoLose, int winnerHP, List<Player> Winners)
+        public static void WinnerDetermination(Player whoWin, List<Player> winners)
         {
-            Logger.Winner(whoWin, whoLose);
-            whoWin.ReturnToBasic();
-            /*whoWin.Curses.Clear();
-            whoWin.Actions.AddRange(whoWin.EndedActions);
-            whoWin.EndedActions.Clear();*/
-            /*for (int i = 0; i < whoWin.Actions.Count; i++)
+            Logger.Winner(whoWin);
+            if (whoWin != null)
             {
-                whoWin.Actions[i].Range = whoWin.Actions[i].BaseRange;
-                if (whoWin.Actions[i].Curse != null)
-                {
-                    whoWin.Actions[i].ActionCurse.Range = whoWin.Actions[i].ActionCurse.BaseRange;
-                }
+                whoWin.ReturnToBasic();
+                winners.Add(whoWin);
             }
-            whoWin.Health = winnerHP;*/
-            Winners.Add(whoWin);
         }
-        //public static void getRandomPlayer()
+        public static Player getRandomPlayer(List<Player> players)
+        {
+            var Rnd = new Random();
+            int i = Rnd.Next(0, players.Count);
+            var player = players[i];
+            players.RemoveAt(i);
+            return player;
+        }
     }
 }

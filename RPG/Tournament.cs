@@ -28,55 +28,72 @@ namespace RPG
                 // Разбить код - Turnament, Round
                 while (players.Count + winners.Count > 1)
                 {
-                    Logger.WhichCon(con);
+                    // можно в метод Round передавать список игроков раунда, где они между собой будут сражаться
+                    Logger.WhichCon(con);             // лучше логги делать отдельными методами
                     while (players.Count > 1)
                     {
-                                    var playersForRound = new List<Player>();
-            Logger.WriteLog($"---------{round}-й раунд!------");
-            int i = Rnd.Next(0, players.Count); // getRandomPlayer method
-            var FirstPlayer = players[i];
-            playersForRound.Add(players[i]);
-            players.RemoveAt(i);
-            i = Rnd.Next(0, players.Count - 1);
-            var SecondPlayer = players[i];
-            playersForRound.Add(players[i]);
-            players.RemoveAt(i);
+                        Logger.WriteLog($"---------{round}-й раунд!---------"); // или чисто так писать?
 
-            int firstPlHP = FirstPlayer.Health;
-            int secPlHP = SecondPlayer.Health;
+                        int roundPlayersCount = 2;
+                        var playersForRound = new List<Player>();
+                        while (roundPlayersCount != 0)
+                        {
+                            playersForRound.Add(PlayerManager.getRandomPlayer(players));
+                            roundPlayersCount--;
+                        }
 
-            var whoIsAttack = Rnd.Next(1, 3);
-            //var FirstPlayer = playersForRound[i];   //. - забираем из списка - и удаляем в списке
-            //var SecondPlayer = playersForRound[i];      //- берем оставшегося
+                        /*var FirstPlayer = PlayerManager.getRandomPlayer(players);
+                        var SecondPlayer = PlayerManager.getRandomPlayer(players);
 
-            while (FirstPlayer.Health > 0 && SecondPlayer.Health > 0)
-            {
-                Fight.Attack(FirstPlayer, SecondPlayer); //Проверять - останется ли жив 2
-                Fight.Attack(SecondPlayer, FirstPlayer);
-            }
-            if (FirstPlayer.Health < 1)
-            {
-                PlayerManager.WinnerDetermination(SecondPlayer, FirstPlayer, secPlHP, winners);
-            }
-            else if (SecondPlayer.Health < 1)
-            {
-                PlayerManager.WinnerDetermination(FirstPlayer, SecondPlayer, firstPlHP, winners);
-            }
-            else { throw new Exception("У нас сдаваться запрещено!"); }
+                        //var whoIsAttack = Rnd.Next(0, playersForRound.Count);
 
-            round++;
+                        while (FirstPlayer.Health > 0 && SecondPlayer.Health > 0)
+                        {
+                            Fight.Attack(FirstPlayer, SecondPlayer); // Проверять - останется ли жив 2
+                            Fight.Attack(SecondPlayer, FirstPlayer);
+                        }
+                        if (FirstPlayer.Health < 1)
+                        {
+                            PlayerManager.WinnerDetermination(SecondPlayer, winners);
+                        }
+                        else if (SecondPlayer.Health < 1)
+                        {
+                            PlayerManager.WinnerDetermination(FirstPlayer, winners);
+                        }
+                        else
+                        {
+                            throw new Exception("У нас сдаваться запрещено!");
+                        }*/
+
+                        PlayerManager.WinnerDetermination(Round(playersForRound), winners);
+
+                        round++;
                     }
                     players.AddRange(winners.ToArray());
                     winners.Clear();
                     con++;
                     round = 1;
                 }
-                Logger.WriteLog($"\n========================\n{players[0].Name}({players[0].PClass}) выигрывает соревнование!!\n========================");
+                if (players.Count != 0)
+                    Logger.WriteLog($"\n========================\n{players[0].Name}({players[0].PClass}) выигрывает соревнование!!\n========================");
+                else
+                    Logger.WriteLog("======================== К сожалению, все участники турнира погибли в бою! Турнир удался на славу! ======================== ");
             }
             else { throw new Exception("Неправильно задано число игроков"); }
         }
-
-
+        public Player Round(List<Player> players)
+        {
+            Logger.whoAgainstWhom(players);
+            while (players.FindAll(x => x.Health > 0).Count > 1)
+            {
+                foreach (var player in players)
+                {
+                    if (player.Health > 0)
+                        Fight.Attack(player, players.First(x => x != player));
+                }
+            }
+            return players.FirstOrDefault(x => x.Health > 0);
+        }
     }
 }
 

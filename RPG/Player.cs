@@ -11,7 +11,7 @@ namespace RPG
         public Player()
         {
             Strength = rnd.Next(10, 25);
-            Health = rnd.Next(70, 120);
+            Health = rnd.Next(80, 150);
             baseHP = Health;
         }
         public Player(int strenght, int hp)
@@ -34,36 +34,36 @@ namespace RPG
             {
                 var numberOfAction = rnd.Next(0, this.ReturnAvailableActions().Count);
 
-                this.Actions[numberOfAction].Damage = ReturnDamage(this.Actions[numberOfAction]);  // у Action'a должна учитываться сила игрока
+                //this.Actions[numberOfAction].Damage = ReturnDamage(this.Actions[numberOfAction]);  // у Action'a должна учитываться сила игрока
 
                 this.Actions[numberOfAction].Range--;        // проверить - не надо ли удалить из-за того, что счетчик использований закончился
+
                 if (this.Actions[numberOfAction].Range == 0)
                 {
                     this.EndedActions.Add(this.Actions[numberOfAction]);
-                    /*this.Actions.Remove(this.Actions[numberOfAction]);
-                    return null;*/
                 }
                 return this.Actions[numberOfAction];
             }
             return null;
         }
-        public int GetDamage(IAction action)
+        public int GetDamage(IAction action, string enemyName, int damage)
         {
-            this.Health -= action.Damage;
-            Logger.WriteLog($"{this.Name} получил {action.Damage} ед. урона от способности {action.Name} {action.Range} осталось");
+            this.Health -= damage; // action.Damage;
+            //Logger.WriteLog($"{this.Name} получил {action.Damage} ед. урона от способности {action.Name} ({action.Range} осталось)");
+            //Logger.WriteLog($"--{enemyName} применил '{action.Name}' и нанес {action.Damage} ед. урона! {action.Range} осталось --");
 
             foreach (var curse in this.Curses)  // Необходимо применить пассивный урон от всех уже наложенных проклятий
             {
                 this.Health -= curse.Damage;
                 curse.Range--;
-                Logger.WriteLog($"Проклятье {curse.Name} нанесло {curse.Damage} ед. урона {curse.Range} осталось");
+                Logger.WriteLog($"{this.Name} получил {curse.Damage} ед. урона от эффекта'{curse.Name}' ({curse.Range} осталось)");
             }
-            this.Curses.RemoveAll(x=>x.Range == 0);
-
-            if (action.Curse != null)
+            if (action.Curse != null && !this.Curses.Any(x => x.Name == action.Curse.Name))
             {
                 this.Curses.Add(action.Curse);
             }
+            this.Curses.RemoveAll(x => x.Range == 0);
+
             return action.Damage;
         }
         public void ReturnToBasic()
@@ -71,12 +71,13 @@ namespace RPG
             this.Curses.Clear();
             this.Actions.AddRange(this.EndedActions);
             this.EndedActions.Clear();
-            for (int i = 0; i < this.Actions.Count; i++)
+
+            foreach (var action in this.Actions)
             {
-                this.Actions[i].Range = this.Actions[i].BaseRange;
-                if (this.Actions[i].Curse != null)
+                action.Range = action.BaseRange;
+                if (action.Curse != null)
                 {
-                    this.Actions[i].Curse.Range = this.Actions[i].Curse.BaseRange;
+                    action.Curse.Range = action.Curse.BaseRange;
                 }
             }
             this.Health = baseHP;
@@ -102,8 +103,8 @@ namespace RPG
         }
         protected List<IAction> ReturnAvailableActions()
         {
-            // var a = this.Actions;
             this.Actions.RemoveAll(x => x.Range == 0);
+
             return this.Actions;
         }
     }

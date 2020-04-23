@@ -8,23 +8,21 @@ namespace RPG
     {
         public static void Attack(Player whoAttacked, Player whoWasAttacked)  // атака
         {
-            // 1 - Мы запрашиваем у Игрока - дай мне атаку
             if (whoAttacked.CanMove())
             {
-                var attackAction = whoAttacked.GetAction(); // 1 - Мы запрашиваем у Игрока - дай мне атаку
+                var attackAction = whoAttacked.GetAction(); // Запрашиваем атаку
+
                 if (attackAction != null)
                 {
-                    whoWasAttacked.GetDamage(attackAction);   // Передаем атаку атакуемому - просим сказать сколько он получил урона / осталось жизни
+                    var  damage = whoWasAttacked.GetDamage(attackAction, whoAttacked.Name, whoAttacked.ReturnDamage(attackAction));   // Передаем атаку атакуемому - просим сказать сколько он получил урона / осталось жизни
+                    Logger.WriteLog($"---{whoAttacked.Name} использовал способность {attackAction.Name} и нанес {damage} ед. урона ... ({attackAction.Range} осталось)---");
+                    // логгер с проклятиями обрабатывается в методе игрока 
                 }
             }
             else
             {
-                Logger.WriteLog($"{whoAttacked.Name} пропустил ход ");
-                // Лог про пропуск хода
+                Logger.WriteLog($"___{whoAttacked.Name} пропустил ход___");
             }
-            // Вот тут заканчивается этот метод
-
-
 
 
             /*  var rnd = new Random();

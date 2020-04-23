@@ -23,11 +23,25 @@ namespace RPG
         }
         public static void WhichCon(int con)
         {
-            Console.WriteLine($"\n --====================-- \n   Начинается {con}-й кон!!!\n --==================--");
+            Console.WriteLine($"\n ======================= \n   Начинается {con}-й кон!!!\n =======================");
         }
-        public static void Winner(Player winner, Player looser)
+        public static void Winner(Player winner)
         {
-            Console.WriteLine($"{winner.Name}({winner.PClass}) побеждает {looser.Name}({looser.PClass})!");
+            if (winner == null)
+                Console.WriteLine("Все погибли");
+            else
+                Console.WriteLine($"{winner.Name}({winner.PClass}) побеждает своего противника!");
+
+        }
+        public static void whoAgainstWhom(List<Player> players)
+        {
+            string s = $"=!=!=!=!=!= {players[0].Name}({players[0].PClass})";
+            for (int i = 1; i < players.Count; i++)
+            {
+                s += $" sv {players[i].Name}({players[i].PClass})";
+            }
+            s += " =!=!=!=!=!=";
+            Console.WriteLine(s);
         }
     }
 }
