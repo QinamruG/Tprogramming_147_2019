@@ -57,7 +57,6 @@ namespace CourseApp
                 Console.WriteLine(pieces[i].Send("Tommy"));
             }
 
-            Console.WriteLine("hELLO");
             List<double> taskA = TaskA(2.25, 1.2, 2.7, 0.3);
 
             foreach (var item in taskA)

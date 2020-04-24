@@ -30,9 +30,8 @@ namespace CourseApp
             return "Virtual Method";
         }
 
-        public int CompareTo(PieceOfArt obj)
+        public int CompareTo(PieceOfArt poa)
         {
-            PieceOfArt poa = obj;
             if (poa != null)
             {
                 return this.Name.CompareTo(poa.Name);
