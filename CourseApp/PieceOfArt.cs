@@ -2,7 +2,7 @@ using System;
 
 namespace CourseApp
 {
-    public abstract class PieceOfArt
+    public abstract class PieceOfArt : IComparable<PieceOfArt>, IResultOfMentalWork
     {
         public PieceOfArt(int prodYear, string name, string country)
         {
@@ -28,6 +28,19 @@ namespace CourseApp
         public virtual string VirtualView()
         {
             return "Virtual Method";
+        }
+
+        public int CompareTo(PieceOfArt obj)
+        {
+            PieceOfArt poa = obj;
+            if (poa != null)
+            {
+                return this.Name.CompareTo(poa.Name);
+            }
+            else
+            {
+                throw new ArgumentException("object not found");
+            }
         }
     }
 }

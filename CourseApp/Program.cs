@@ -15,11 +15,7 @@ namespace CourseApp
             return c;
         }
 
-        public static List<double> TaskA(
-                                         double a,
-                                         double xn,
-                                         double xk,
-                                         double dx)
+        public static List<double> TaskA(double a, double xn, double xk, double dx)
         {
             List<double> y = new List<double>();
             for (var x = xn; x < xk; x += dx)
@@ -30,9 +26,7 @@ namespace CourseApp
             return y;
         }
 
-        public static List<double> TaskB(
-                                 double a,
-                                 List<double> x)
+        public static List<double> TaskB(double a, List<double> x)
         {
             List<double> y = new List<double>(5);
             foreach (double i in x)
@@ -45,11 +39,22 @@ namespace CourseApp
 
         public static void Main(string[] args)
         {
-            var pieces = new PieceOfArt[] { new Film(), new Picture() };
+            var pieces = new List<PieceOfArt>() { new Film(1987, "Nekromantik", "Germany"), new Picture(1503, "Mona Lisa", "Italy"), new Film(2013, "Moebiuseu", "South Korea") };
+            foreach (var p in pieces)
+            {
+                Console.WriteLine(p.Name);
+            }
+
+            pieces.Sort();
+
+            foreach (var p in pieces)
+            {
+                Console.WriteLine(p.Name);
+            }
 
             for (int i = 0; i < 2; i++)
             {
-             Console.WriteLine(pieces[i].Send("Tommy"));
+                Console.WriteLine(pieces[i].Send("Tommy"));
             }
 
             Console.WriteLine("hELLO");
