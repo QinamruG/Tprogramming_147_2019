@@ -55,9 +55,9 @@ namespace RPG
                     round = 1;
                 }
                 if (players.Count != 0)
-                    Logger.WriteLog($"\n========================\n{players[0].Name}({players[0].PClass}) выигрывает соревнование!!\n========================");
+                    Logger.WriteLog($"\n========================\n{players[0].Name}({players[0].PClass}) становится победителем турнира!\n========================");
                 else
-                    Logger.WriteLog("======================== К сожалению, все участники турнира погибли в бою! Турнир удался на славу! ======================== ");
+                    Logger.WriteLog("======================== Все участники турнира погибли в бою! Турнир удался на славу! ======================== ");
             }
             else { throw new Exception("Неправильно задано число игроков"); }
         }
@@ -67,10 +67,10 @@ namespace RPG
 
             while (players.FindAll(x => x.Health > 0).Count > 1)
             {
-                foreach (var player in players)
+                foreach (var player in players.Where(x => x.Health > 0))
                 {
                     if (player.Health > 0)
-                        Fight.Attack(player, players.First(x => x != player));
+                        Fight.Attack(player, players.First(x => x != player && x.Health > 0));
                 }
             }
             return players.FirstOrDefault(x => x.Health > 0);
