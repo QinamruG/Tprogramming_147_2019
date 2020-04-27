@@ -11,6 +11,7 @@ namespace RPG
             var Rnd = new Random();
             Logger.WriteLog("Введите корректное число игроков");
             var playerCount = Convert.ToUInt16(Console.ReadLine());
+
             while (!PowersOfTwo.Any(x => x.Equals(playerCount)))
             {
                 Logger.WriteLog("Попробуйте снова");
@@ -25,45 +26,24 @@ namespace RPG
 
                 int con = 1;
                 int round = 1;
-                // Разбить код - Turnament, Round
+
                 while (players.Count + winners.Count > 1)
                 {
-                    // можно в метод Round передавать список игроков раунда, где они между собой будут сражаться
+
                     Logger.WhichCon(con);             // лучше логги делать отдельными методами
+
                     while (players.Count > 1)
                     {
                         Logger.WriteLog($"---------{round}-й раунд!---------"); // или чисто так писать?
 
                         int roundPlayersCount = 2;
                         var playersForRound = new List<Player>();
+
                         while (roundPlayersCount != 0)
                         {
                             playersForRound.Add(PlayerManager.getRandomPlayer(players));
                             roundPlayersCount--;
                         }
-
-                        /*var FirstPlayer = PlayerManager.getRandomPlayer(players);
-                        var SecondPlayer = PlayerManager.getRandomPlayer(players);
-
-                        //var whoIsAttack = Rnd.Next(0, playersForRound.Count);
-
-                        while (FirstPlayer.Health > 0 && SecondPlayer.Health > 0)
-                        {
-                            Fight.Attack(FirstPlayer, SecondPlayer); // Проверять - останется ли жив 2
-                            Fight.Attack(SecondPlayer, FirstPlayer);
-                        }
-                        if (FirstPlayer.Health < 1)
-                        {
-                            PlayerManager.WinnerDetermination(SecondPlayer, winners);
-                        }
-                        else if (SecondPlayer.Health < 1)
-                        {
-                            PlayerManager.WinnerDetermination(FirstPlayer, winners);
-                        }
-                        else
-                        {
-                            throw new Exception("У нас сдаваться запрещено!");
-                        }*/
 
                         PlayerManager.WinnerDetermination(Round(playersForRound), winners);
 
@@ -84,6 +64,7 @@ namespace RPG
         public Player Round(List<Player> players)
         {
             Logger.whoAgainstWhom(players);
+
             while (players.FindAll(x => x.Health > 0).Count > 1)
             {
                 foreach (var player in players)

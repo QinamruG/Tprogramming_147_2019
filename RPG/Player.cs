@@ -34,8 +34,6 @@ namespace RPG
             {
                 var numberOfAction = rnd.Next(0, this.ReturnAvailableActions().Count);
 
-                //this.Actions[numberOfAction].Damage = ReturnDamage(this.Actions[numberOfAction]);  // у Action'a должна учитываться сила игрока
-
                 this.Actions[numberOfAction].Range--;        // проверить - не надо ли удалить из-за того, что счетчик использований закончился
 
                 if (this.Actions[numberOfAction].Range == 0)
@@ -48,11 +46,9 @@ namespace RPG
         }
         public int GetDamage(IAction action, string enemyName, int damage)
         {
-            this.Health -= damage; // action.Damage;
-            //Logger.WriteLog($"{this.Name} получил {action.Damage} ед. урона от способности {action.Name} ({action.Range} осталось)");
-            //Logger.WriteLog($"--{enemyName} применил '{action.Name}' и нанес {action.Damage} ед. урона! {action.Range} осталось --");
+            this.Health -= damage;
 
-            foreach (var curse in this.Curses)  // Необходимо применить пассивный урон от всех уже наложенных проклятий
+            foreach (var curse in this.Curses) 
             {
                 this.Health -= curse.Damage;
                 curse.Range--;

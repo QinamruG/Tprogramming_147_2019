@@ -26,20 +26,6 @@ namespace RPG
                 }
             }
         }
-        /*public static void ChooseOpponents(List<Player> Players, Player FirstPlayer, Player SecondPlayer, int firstPlHP, int secPlHP)
-        {
-            var Rnd = new Random();
-            int i = Rnd.Next(0, Players.Count);
-            FirstPlayer = Players[i];
-            Players.RemoveAt(i);
-            i = Rnd.Next(0, Players.Count - 1);
-            SecondPlayer = Players[i];
-            Players.RemoveAt(i);
-            firstPlHP = FirstPlayer.Health;
-            secPlHP = SecondPlayer.Health;
-
-        }*/
-
         public static void WinnerDetermination(Player whoWin, List<Player> winners)
         {
             Logger.Winner(whoWin);
